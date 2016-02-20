@@ -4,7 +4,7 @@
   "description": "Rain website",
   "main": "server/https-server.js",
   "scripts": {
-    "start": "node server/https-server.js",
+    "start": "sudo node ./server/https-server.js",
     "test": "./node_modules/.bin/mocha test/index.js",
     "lint": "gulp lint",
     "git-add": "git add .",
