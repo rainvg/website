@@ -112,6 +112,13 @@ angular.module('rain.directives', []).directive('navbar', function()
       scope.logo = attributes.logo + '.png';
       scope.video_mp4 = attributes.video + '.mp4';
       scope.video_webm = attributes.video + '.webm';
+
+      $(element).find('.background-image-holder').each(function()
+      {
+        $(this).css('background', 'url("' + scope.background + '")');
+        $(this).children('img').hide();
+        $(this).css('background-position', 'initial');
+      });
     }
   };
 });
