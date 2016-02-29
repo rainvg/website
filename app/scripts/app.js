@@ -1,1 +1,1 @@
-angular.module('', []);
+angular.module('rain', ['rain.controllers', 'rain.directives']);

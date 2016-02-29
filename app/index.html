@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app = "rain">
   <head>
     <meta charset="utf-8">
     <title>Rain</title>
@@ -15,32 +15,9 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
   <body>
-    <div class="nav-container">
-        <a id="top"></a>
-        <nav class="absolute transparent">
-            <div class="nav-bar">
-                <div class="module left">
-                    <a href="index.html">
-                        <img class="logo logo-dark" alt="Rain" src="assets/images/logo/logo_reverse.png" />
-                    </a>
-                </div>
-                <div class="module widget-handle mobile-toggle right visible-sm visible-xs">
-                    <i class="ti-menu"></i>
-                </div>
-                <div class="module-group right">
-                    <div class="module left">
-                        <ul class="menu">
-                          <li><a href="#">Home</a></li>
-                          <li><a href="#about-us">About us</a></li>
-                          <li><a href="#">Rain CDN</a></li>
-                        </ul>
-                    </div>
-                    <!--end of menu module-->
-                </div>
-                <!--end of module group-->
-            </div>
-        </nav>
-    </div>
+    <navbar></navbar>
+
+    <!-- <video-container title="We are making things happen" sub-title="Join the development" logo="rain_logo.png" video="" /> -->
     <div class="main-container">
       <section class="cover image-bg fullscreen overlay overlay-heavy bg-dark vid-bg pt-xs-120">
           <div class="player">
@@ -324,5 +301,12 @@
     <script src="scripts/ui/smooth-scroll.min.js"></script>
     <script src="scripts/ui/parallax.js"></script>
     <script src="scripts/ui/scripts.js"></script>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+
+    <!-- Custom -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers.js"></script>
+    <script src="scripts/directives.js"></script>
   </body>
 </html>

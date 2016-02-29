@@ -30,7 +30,7 @@ gulp.task('sass', function()
 
 gulp.task('js', function ()
 {
-  return gulp.src('js/*js').pipe(browserify()).pipe(uglify()).pipe(gulp.dest('dist/js'));
+  return gulp.src('js/*js').pipe(uglify()).pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('js-watch', ['js'], browserSync.reload);
