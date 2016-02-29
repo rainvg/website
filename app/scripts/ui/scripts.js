@@ -74,9 +74,11 @@ $(document).ready(function() {
 
         $('.nav-container').css('min-height', $('nav').outerHeight(true));
 
+        /*
         $(window).resize(function() {
             $('.nav-container').css('min-height', $('nav').outerHeight(true));
         });
+        */
 
         // Compensate the height of parallax element for inline nav
 
