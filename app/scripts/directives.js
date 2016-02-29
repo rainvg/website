@@ -97,4 +97,21 @@ angular.module('rain.directives', []).directive('navbar', function()
       }, false);
     }
   };
+}).directive('videoSection', function()
+{
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'scripts/directives/video-section.html',
+    controller: 'video-controller',
+    link: function(scope, element, attributes)
+    {
+      scope.background = attributes.background + '.png';
+      scope.title = attributes.title;
+      scope.subtitle = attributes.subtitle;
+      scope.logo = attributes.logo + '.png';
+      scope.video_mp4 = attributes.video + '.mp4';
+      scope.video_webm = attributes.video + '.webm';
+    }
+  };
 });

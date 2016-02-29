@@ -1,4 +1,7 @@
 angular.module('rain.controllers', []).controller('navbar-controller', ['$scope', function($scope)
 {
-  $scope.test = 'pippo';
+  
+}]).controller('video-controller', ['$scope', function($scope)
+{
+
 }]);
