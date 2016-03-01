@@ -14,7 +14,6 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     var first_section_height = $('.main-container section:nth-of-type(1)').outerHeight(true);
     var nav_outer_height = $('body .nav-container nav:first').outerHeight();
 
-    console.log(nav_properties);
     var scroll_y = window.pageYOffset;
 
     if (scroll_y <= 0)
