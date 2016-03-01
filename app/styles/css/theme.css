@@ -3865,8 +3865,9 @@ iframe {
   }
 }
 video {
-  max-width: 100%   !important;
-  max-height: auto  !important;
+  max-width: 100%;
+  transform: scale(1.5);
+  -webkit-transform: scale(1.5);
 }
 .local-video-container {
   position: relative;
