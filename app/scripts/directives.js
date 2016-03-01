@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui_services', function(ui_services)
 {
   return {
@@ -5,10 +7,10 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     replace: true,
     templateUrl: 'scripts/directives/navbar.html',
     controller: 'navbar-controller',
-    link: function(scope, element, attributes)
+    link: function(scope, element)
     {
       var nav_properties = {nav_fixed: false, nav_scrolled: false, nav_out_of_sight: false};
-      window.addEventListener("scroll", function()
+      window.addEventListener('scroll', function()
       {
         ui_services.navbar_fixer(element, nav_properties);
       });
@@ -16,6 +18,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
   };
 }]).directive('videoSection', ['ui_services', function(ui_services)
 {
+
   return {
     restrict: 'E',
     replace: true,
@@ -48,13 +51,13 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
       {
         scope.title = attributes.title;
         scope.icon = attributes.icon;
-        if(attributes.active == 'true')
-          scope.active = "active";
+        if(attributes.active === 'true')
+          scope.active = 'active';
 
         element.find('.tab-content p').append(transclude());
-      }
+      };
     }
-  }
+  };
 }).directive('aboutUsSection', ['$timeout', function($timeout)
 {
   return {
@@ -76,7 +79,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
 
         element.find('.tabs li').each(function()
         {
-          var originalTab = $(this), activeClass = "";
+          var originalTab = $(this), activeClass = '';
           if (originalTab.is('.tabs>li:first-child'))
             activeClass = ' class="active"';
 
@@ -84,7 +87,8 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
           originalTab.closest('.tabbed-content').find('.content').append(tabContent);
         });
 
-        element.find('.tabs li').click(function() {
+        element.find('.tabs li').click(function()
+        {
             $(this).closest('.tabs').find('li').removeClass('active');
             $(this).addClass('active');
             var liIndex = $(this).index() + 1;
@@ -93,5 +97,5 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
         });
       }, 0);
     }
-  }
+  };
 }]);
