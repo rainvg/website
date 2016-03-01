@@ -34,14 +34,14 @@ $(document).ready(function() {
 
     // Append .background-image-holder <img>'s as CSS backgrounds
 
-/*
+
     $('.background-image-holder').each(function() {
         var imgSrc = $(this).children('img').attr('src');
         $(this).css('background', 'url("' + imgSrc + '")');
         $(this).children('img').hide();
         $(this).css('background-position', 'initial');
     });
-*/
+
     // Fade in background images
 
     setTimeout(function() {
@@ -112,9 +112,12 @@ $(document).ready(function() {
     $('.menu > li > ul').each(function() {
         var menu = $(this).offset();
         var farRight = menu.left + $(this).outerWidth(true);
-        if (farRight > $(window).width() && !$(this).hasClass('mega-menu')) {
+        if (farRight > $(window).width() && !$(this).hasClass('mega-menu'))
+        {
             $(this).addClass('make-right');
-        } else if (farRight > $(window).width() && $(this).hasClass('mega-menu')) {
+        }
+        else if (farRight > $(window).width() && $(this).hasClass('mega-menu'))
+        {
             var isOnScreen = $(window).width() - menu.left;
             var difference = $(this).outerWidth(true) - isOnScreen;
             $(this).css('margin-left', -(difference));
@@ -147,6 +150,7 @@ $(document).ready(function() {
     $('.module.widget-handle').click(function() {
         $(this).toggleClass('toggle-widget-handle');
     });
+
 
     $('.search-widget-handle .search-form input').click(function(e){
         if (!e) e = window.event;
