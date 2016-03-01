@@ -3867,7 +3867,7 @@ iframe {
 video {
   max-width: 100%   !important;
   max-height: auto  !important;
-
+  object-fit: cover;
 }
 .local-video-container {
   position: relative;
