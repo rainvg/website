@@ -102,4 +102,40 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
       }, 0);
     }
   };
+}]).directive('coffeeTopic', function()
+{
+  return {
+    restrict: 'AE',
+    replace: true,
+    templateUrl: 'scripts/directives/coffee-section-topic.html',
+    transclude: true,
+    scope: true,
+    compile: function()
+    {
+      return function(scope, element, attributes, ctrl, transclude)
+      {
+        scope.title = attributes.title;
+        scope.icon = attributes.icon;
+        console.log(element.find('.feature p'));
+
+        element.find('.feature p').append(transclude());
+      };
+    }
+  };
+}).directive('coffeeSection', ['ui_services', function(ui_services)
+{
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'scripts/directives/coffee-section.html',
+    transclude: true,
+    link: function(scope, element, attributes, ctrl, transclude)
+    {
+      element.find('.coffee-topic').append(transclude());
+      scope.background = attributes.background + '.jpg';
+      scope.title = attributes.title;
+      scope.subtitle = attributes.subtitle;
+      ui_services.update_background(element, scope.background);
+    }
+  };
 }]);
