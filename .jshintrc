@@ -35,6 +35,7 @@
     "maxcomplexity" : false,    // {int} Max cyclomatic complexity per function
     "maxlen"        : false,    // {int} Max number of characters per line
     "varstmt"       : false,    // true: Disallow any var statements. Only `let` and `const` are allowed.
+    "elision"       : true,
 
     // Relaxing
     "asi"           : false,     // true: Tolerate Automatic Semicolon Insertion (no semicolons)
@@ -88,6 +89,10 @@
     // Custom Globals
     "globals"       : {
       "angular": false,
-      "$": false
+      "$": false,
+      "jQuery": false,
+      "twitterFetcher": false,
+      "google": false,
+      "Masonry": false
     }
 }
