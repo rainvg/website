@@ -108,7 +108,7 @@ $(document).ready(function() {
     mr_navOuterHeight = $('body .nav-container nav:first').outerHeight();
 
     // Menu dropdown positioning
-
+/*
     $('.menu > li > ul').each(function() {
         var menu = $(this).offset();
         var farRight = menu.left + $(this).outerWidth(true);
@@ -123,9 +123,9 @@ $(document).ready(function() {
             $(this).css('margin-left', -(difference));
         }
     });
-
+*/
     // Mobile Menu
-
+/*
     $('.mobile-toggle').click(function() {
         $('.nav-bar').toggleClass('nav-open');
         $(this).toggleClass('active');
@@ -151,7 +151,7 @@ $(document).ready(function() {
         $(this).toggleClass('toggle-widget-handle');
     });
 
-
+*/
     $('.search-widget-handle .search-form input').click(function(e){
         if (!e) e = window.event;
         e.stopPropagation();

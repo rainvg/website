@@ -94,4 +94,6 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     }
 
   };
+
+
 });
