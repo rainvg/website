@@ -45,7 +45,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
   return {
     restrict: 'AE',
     replace: true,
-    templateUrl: 'scripts/directives/topic.html',
+    templateUrl: 'scripts/directives/about-us-topic.html',
     transclude: true,
     scope: true,
     priority: 1500.1,
