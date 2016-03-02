@@ -10,62 +10,14 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     link: function(scope, element)
     {
       var nav_properties = {nav_fixed: false, nav_scrolled: false, nav_out_of_sight: false};
+
       window.addEventListener('scroll', function()
       {
         ui_services.navbar_fixer(element, nav_properties);
       });
 
-      // Mobile Menu
-      $(element).find('.mobile-toggle').click(function()
-      {
-        $(element).find('.nav-bar').toggleClass('nav-open');
-        $(this).toggleClass('active');
-      });
-
-      /*
-      // Dropdown positioning
-      $(element).find('.menu>li>ul').each(function()
-      {
-        var menu = $(this).offset();
-        var farRight = menu.left + $(this).outerWidth(true);
-        if (farRight > $(window).width() && !$(this).hasClass('mega-menu'))
-          $(this).addClass('make-right');
-        else if (farRight > $(window).width() && $(this).hasClass('mega-menu'))
-        {
-          var isOnScreen = $(window).width() - menu.left;
-          var difference = $(this).outerWidth(true) - isOnScreen;
-          $(this).css('margin-left', -(difference));
-        }
-      });
-
-      // Nested menus
-      $(element).find('.menu').click(function(e)
-      {
-        if (!e) e = window.event;
-        e.stopPropagation();
-        if ($(this).find('ul').length)
-          $(this).toggleClass('toggle-sub');
-        else
-          $(this).parents('.toggle-sub').removeClass('toggle-sub');
-      });
-      */
-
-      $(element).find('.menu>li>a').click(function()
-      {
-        //if ($(this).hasClass('inner-link'))
-        $(this).parents('.nav-bar').removeClass('nav-open');
-      });
-
-      /*
-      // Don't know if really useful (no behaviour revealed)
-      // css for toggle-widget-handle:
-      //  display: block !important;
-
-      $(element).find('.module.widget-handle').click(function()
-      {
-          $(this).toggleClass('toggle-widget-handle');
-      });
-      */
+      ui_services.navbar_setup(element);
+      ui_services.navbar_dropdown_setup(element);
     }
   };
 }]).directive('videoSection', ['ui_services', function(ui_services)
@@ -97,7 +49,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     transclude: true,
     scope: true,
     priority: 1500.1,
-    compile: function(scope, element, attributes)
+    compile: function()
     {
       return function(scope, element, attributes, ctrl, transclude)
       {
