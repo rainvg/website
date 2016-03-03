@@ -99,7 +99,7 @@ angular.module('rain.ui.services', []).service('ui_services', function()
   this.navbar_setup = function(element)
   {
     var nav = element.find('nav');
-    
+
     if (!nav.hasClass('fixed') && !nav.hasClass('absolute'))
     {
       // Make nav container height of nav
@@ -213,9 +213,91 @@ angular.module('rain.ui.services', []).service('ui_services', function()
   this.parallax_handler = function()
   {
     // Disable parallax on mobile
-
     if ((/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera))
       $('section').removeClass('parallax');
-
   };
+
+  this.slider_setup = function(element)
+  {
+    console.log(element);
+    element.find('.slider-all-controls').flexslider({
+      start: function(slider)
+      {
+        if(slider.find('.slides li:first-child').find('.fs-vid-background video').length)
+          slider.find('.slides li:first-child').find('.fs-vid-background video').get(0).play();
+      },
+      after: function(slider)
+      {
+        if(slider.find('.fs-vid-background video').length)
+        {
+          if(slider.find('li:not(.flex-active-slide)').find('.fs-vid-background video').length)
+            slider.find('li:not(.flex-active-slide)').find('.fs-vid-background video').get(0).pause();
+
+          if(slider.find('.flex-active-slide').find('.fs-vid-background video').length)
+            slider.find('.flex-active-slide').find('.fs-vid-background video').get(0).play();
+        }
+      }
+    });
+
+    element.find('.slider-paging-controls').flexslider({
+      animation: 'slide',
+      directionNav: false
+    });
+
+    element.find('.slider-arrow-controls').flexslider({
+      controlNav: false
+    });
+
+    element.find('.slider-thumb-controls .slides li').each(function()
+    {
+      var imgSrc = $(this).find('img').attr('src');
+      $(this).attr('data-thumb', imgSrc);
+    });
+
+    element.find('.slider-thumb-controls').flexslider({
+      animation: 'slide',
+      controlNav: 'thumbnails',
+      directionNav: true
+    });
+
+    element.find('.logo-carousel').flexslider({
+      minItems: 1,
+      maxItems: 4,
+      move: 1,
+      itemWidth: 200,
+      itemMargin: 0,
+      animation: 'slide',
+      slideshow: true,
+      slideshowSpeed: 3000,
+      directionNav: false,
+      controlNav: false
+    });
+
+    var setUpTweets = setInterval(function()
+    {
+      if ($('.tweets-slider').find('li.flex-active-slide').length)
+      {
+        clearInterval(setUpTweets);
+        return;
+      }
+      else
+      {
+        if ($('.tweets-slider').length)
+        {
+          $('.tweets-slider').flexslider({
+            directionNav: false,
+            controlNav: false
+          });
+        }
+      }
+    }, 500);
+  }
+
+  this.set_icons = function(icon_container, icons)
+  {
+    icons.forEach(function(icon)
+    {
+      icon_container.append('<i class="' + icon + ' icon"></i>')
+    });
+  }
 });

@@ -292,7 +292,7 @@ $(document).ready(function()
     }
 
     // Image Sliders
-
+/*
     $('.slider-all-controls').flexslider({
       start: function(slider)
       {
@@ -345,7 +345,7 @@ $(document).ready(function()
       directionNav: false,
       controlNav: false
     });
-
+*/
     // Lightbox gallery titles
 
     $('.lightbox-grid li a').each(function(){
@@ -1034,6 +1034,7 @@ $(window).load(function()
 
   // Initialize twitter feed
 
+  /*
   var setUpTweets = setInterval(function()
   {
     if ($('.tweets-slider').find('li.flex-active-slide').length)
@@ -1052,7 +1053,7 @@ $(window).load(function()
       }
     }
   }, 500);
-
+*/
   mr_firstSectionHeight = $('.main-container section:nth-of-type(1)').outerHeight(true);
 
 

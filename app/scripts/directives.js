@@ -138,4 +138,53 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
       ui_services.update_background(element, scope.background);
     }
   };
+}]).directive('forestTopic', function()
+{
+  return {
+    restrict: 'AE',
+    replace: true,
+    templateUrl: 'scripts/directives/forest-section-topic.html',
+    transclude: true,
+    scope: true,
+    compile: function()
+    {
+      return function(scope, element, attributes, ctrl, transclude)
+      {
+        scope.author = attributes.author;
+        scope.from = attributes.from;
+        if(attributes.active === 'true')
+          element.toggleClass('active');
+        //element.find('.lead').append(transclude());
+      };
+    }
+  };
+}).directive('forestSection', ['$timeout', 'ui_services', function($timeout, ui_services)
+{
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'scripts/directives/forest-section.html',
+    priority: 2,
+    transclude: true,
+    scope: {
+      icons:'=',
+    },
+    link: function(scope, element, attributes, ctrl, transclude)
+    {
+      element.find('.slides').append(transclude());
+
+
+      $timeout(function()
+      {
+        scope.background = attributes.background + '.jpg';
+        scope.title = attributes.title;
+        var icon_container = element.find('.container .row .spread-children');
+
+        ui_services.set_icons(icon_container, scope.icons);
+        ui_services.update_background(element, scope.background);
+        ui_services.slider_setup(element);
+      }, 0);
+
+    }
+  };
 }]);
