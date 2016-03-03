@@ -219,7 +219,6 @@ angular.module('rain.ui.services', []).service('ui_services', function()
 
   this.slider_setup = function(element)
   {
-    console.log(element);
     element.find('.slider-all-controls').flexslider({
       start: function(slider)
       {
@@ -291,13 +290,5 @@ angular.module('rain.ui.services', []).service('ui_services', function()
         }
       }
     }, 500);
-  }
-
-  this.set_icons = function(icon_container, icons)
-  {
-    icons.forEach(function(icon)
-    {
-      icon_container.append('<i class="' + icon + ' icon"></i>')
-    });
-  }
+  };
 });

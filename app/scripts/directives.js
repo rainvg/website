@@ -116,7 +116,6 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
       {
         scope.title = attributes.title;
         scope.icon = attributes.icon;
-        console.log(element.find('.feature p'));
 
         element.find('.feature p').append(transclude());
       };
@@ -148,13 +147,12 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     scope: true,
     compile: function()
     {
-      return function(scope, element, attributes, ctrl, transclude)
+      return function(scope, element, attributes)
       {
         scope.author = attributes.author;
         scope.from = attributes.from;
         if(attributes.active === 'true')
           element.toggleClass('active');
-        //element.find('.lead').append(transclude());
       };
     }
   };
@@ -173,18 +171,14 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     {
       element.find('.slides').append(transclude());
 
-
       $timeout(function()
       {
         scope.background = attributes.background + '.jpg';
         scope.title = attributes.title;
-        var icon_container = element.find('.container .row .spread-children');
 
-        ui_services.set_icons(icon_container, scope.icons);
         ui_services.update_background(element, scope.background);
         ui_services.slider_setup(element);
       }, 0);
-
     }
   };
 }]);
