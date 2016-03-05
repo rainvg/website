@@ -304,7 +304,7 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     if($(element).find('.inner-link').length)
     {
       $(element).find('.inner-link').smoothScroll({
-        offset: 2,
+        offset: 1,
         speed: 800
       });
     }

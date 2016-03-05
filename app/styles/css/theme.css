@@ -168,7 +168,8 @@ hr.short-thick {
     left: 0;
   }
 }
-@media all and (max-width: 768px) {
+@media all and (max-width: 768px)
+{
   .pull-left-sm {
     float: left !important;
   }
@@ -342,7 +343,9 @@ h6,
   line-height: 24px;
   font-weight: 700;
 }
-@media all and (max-width: 767px) {
+@media all and (max-width: 767px)
+{
+  /* Smartphone */
   h1,
   h1.large,
   .h1 {
@@ -350,6 +353,14 @@ h6,
     line-height: 40px;
     font-weight: 300;
   }
+
+  h1.large img
+  {
+    display: inherit;
+    width: 90%;
+    margin: auto;
+  }
+
   h2 {
     font-size: 32px;
     line-height: 40px;
@@ -4377,7 +4388,8 @@ video {
   position: absolute;
   top: 0;
 }
-@media all and (max-width: 768px) {
+@media all and (max-width: 768px)
+{
   .image-block {
     height: auto;
     max-height: 1000000px;
@@ -4462,7 +4474,8 @@ video {
     padding: 0 20%;
   }
 }
-@media all and (max-width: 767px) {
+@media all and (max-width: 767px)
+{
   .image-square > .content {
     padding: 0 15px;
   }
