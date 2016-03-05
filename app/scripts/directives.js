@@ -15,10 +15,12 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
       window.addEventListener('scroll', function()
       {
         ui_services.navbar_fixer(element, nav_properties);
+        ui_services.inner_link_setup(element);
       });
 
       ui_services.navbar_setup(element);
       ui_services.navbar_dropdown_setup(element);
+      ui_services.inner_link_setup(element);
     }
   };
 }]).directive('videoSection', ['ui_services', function(ui_services)
@@ -277,4 +279,16 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
       scope.rendered = true;
     }
   };
-})
+}).directive('backToTopSection', ['ui_services', function(ui_services)
+{
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'scripts/directives/back-to-top-section.html',
+    transclude: true,
+    link: function(scope, element, attributes, ctrl, transclude)
+    {
+      ui_services.inner_link_setup(element);
+    }
+  };
+}]);

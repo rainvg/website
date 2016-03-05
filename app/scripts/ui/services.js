@@ -291,4 +291,22 @@ angular.module('rain.ui.services', []).service('ui_services', function()
       }
     }, 500);
   };
+
+  this.inner_link_setup = function(element)
+  {
+    $(element).find('.inner-link').each(function()
+    {
+      var href = $(this).attr('href');
+      if(href.charAt(0) !== '#')
+        $(this).removeClass('inner-link');
+    });
+
+    if($(element).find('.inner-link').length)
+    {
+      $(element).find('.inner-link').smoothScroll({
+        offset: -55,
+        speed: 800
+      });
+    }
+  }
 });
