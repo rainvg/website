@@ -167,15 +167,19 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     templateUrl: 'scripts/directives/forest-section-topic.html',
     transclude: true,
     scope: true,
-    compile: function()
+    link: function(scope, element, attributes, ctrl, transclude)
     {
-      return function(scope, element, attributes)
+      console.debug('Running forest topic linking function. Scope id is:', scope.$id);
+      scope.author = attributes.author;
+      scope.from = attributes.from;
+      if(attributes.active === 'true')
+        element.toggleClass('active');
+
+      transclude(scope.$parent, function(clone, parent_scope)
       {
-        scope.author = attributes.author;
-        scope.from = attributes.from;
-        if(attributes.active === 'true')
-          element.toggleClass('active');
-      };
+        element.find('.lead').append(clone);
+        parent_scope.should_render = true;
+      });
     }
   };
 }).directive('forestSection', ['$timeout', 'ui_services', function($timeout, ui_services)
@@ -190,16 +194,29 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     },
     link: function(scope, element, attributes, ctrl, transclude)
     {
-      element.find('.slides').append(transclude());
-
-      $timeout(function()
+      transclude(scope, function(clone)
       {
-        scope.background = attributes.background + '.jpg';
-        scope.title = attributes.title;
+        element.find('.slides').append(transclude());
+      });
 
-        ui_services.update_background(element, scope.background);
-        ui_services.slider_setup(element);
-      }, 0);
+      var remove_watcher = scope.$watch('should_render', function(should_render)
+      {
+        if(should_render)
+        {
+          if(scope.rendered)
+          {
+            remove_watcher();
+            return;
+          }
+          console.log('Rendering forest section');
+          scope.background = attributes.background + '.jpg';
+          scope.title = attributes.title;
+
+          ui_services.update_background(element, scope.background);
+          ui_services.slider_setup(element);
+          scope.rendered = true;
+        }
+      });
     }
   };
 }]);
