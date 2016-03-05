@@ -7,6 +7,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     replace: true,
     templateUrl: 'scripts/directives/navbar.html',
     controller: 'navbar-controller',
+    scope: {},
     link: function(scope, element)
     {
       var nav_properties = {nav_fixed: false, nav_scrolled: false, nav_out_of_sight: false};
@@ -22,7 +23,6 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
   };
 }]).directive('videoSection', ['ui_services', function(ui_services)
 {
-
   return {
     restrict: 'E',
     replace: true,
@@ -40,7 +40,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
       ui_services.update_background(element, scope.background);
     }
   };
-}]).directive('topic', function()
+}]).directive('aboutUsTopic', function()
 {
   return {
     restrict: 'AE',
@@ -48,68 +48,89 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     templateUrl: 'scripts/directives/about-us-topic.html',
     transclude: true,
     scope: true,
-    priority: 1500.1,
-    compile: function()
+    link: function(scope, element, attributes, ctrl, transclude)
     {
-      return function(scope, element, attributes, ctrl, transclude)
-      {
-        scope.title = attributes.title;
-        scope.icon = attributes.icon;
-        if(attributes.active === 'true')
-          scope.active = 'active';
+      console.debug('Running about-us-topic linking function. Scope id is:', scope.$id);
+      if(attributes.active === 'true')
+        scope.active = 'active';
 
-        element.find('.tab-content p').append(transclude());
-      };
+      scope.title = attributes.title;
+      scope.icon = attributes.icon;
+
+      transclude(scope.$parent, function(clone, parent_scope)
+      {
+        element.find('.tab-content p').append(clone);
+        parent_scope.should_render = true;
+      });
     }
   };
-}).directive('aboutUsSection', ['$timeout', function($timeout)
+}).directive('aboutUsSection', function()
 {
   return {
     restrict: 'E',
     replace: true,
     templateUrl: 'scripts/directives/about-us.html',
-    priority: 2,
     transclude: true,
+    scope: {},
     link: function(scope, element, attributes, ctrl, transclude)
     {
-      element.find('.tabs').append(transclude());
+      console.debug('Running about-us-section linking function. Scope id is:', scope.$id);
+      scope.rendered = false;
+      scope.should_render = false;
 
-      $timeout(function()
+      transclude(scope, function(clone)
       {
-        element.find('.tabbed-content').each(function()
+        element.find('.tabs').append(clone);
+      });
+
+      var remove_watcher = scope.$watch('should_render', function(should_render)
+      {
+        if(should_render)
         {
+          if(scope.rendered)
+          {
+            remove_watcher();
+            return;
+          }
+
+          console.debug('Rendering about-us section');
+          element.find('.tabbed-content').each(function()
+          {
             $(this).append('<ul class="content"></ul>');
-        });
+          });
 
-        element.find('.tabs li').each(function()
-        {
-          var originalTab = $(this), activeClass = '';
-          if (originalTab.is('.tabs>li:first-child'))
-            activeClass = ' class="active"';
+          element.find('.tabs li').each(function()
+          {
+            var originalTab = $(this), activeClass = '';
+            if (originalTab.is('.tabs>li:first-child'))
+              activeClass = ' class="active"';
 
-          var tabContent = originalTab.find('.tab-content').detach().wrap('<li' + activeClass + '></li>').parent();
-          originalTab.closest('.tabbed-content').find('.content').append(tabContent);
-        });
+            var tabContent = originalTab.find('.tab-content').detach().wrap('<li' + activeClass + '></li>').parent();
+            originalTab.closest('.tabbed-content').find('.content').append(tabContent);
+          });
 
-        element.find('.tabs li').click(function()
-        {
+          element.find('.tabs li').click(function()
+          {
             $(this).closest('.tabs').find('li').removeClass('active');
             $(this).addClass('active');
             var liIndex = $(this).index() + 1;
             $(this).closest('.tabbed-content').find('.content>li').removeClass('active');
             $(this).closest('.tabbed-content').find('.content>li:nth-of-type(' + liIndex + ')').addClass('active');
-        });
-      }, 0);
+          });
+
+          scope.rendered = true;
+        }
+      });
     }
   };
-}]).directive('coffeeTopic', function()
+}).directive('coffeeTopic', function()
 {
   return {
     restrict: 'AE',
     replace: true,
     templateUrl: 'scripts/directives/coffee-section-topic.html',
     transclude: true,
-    scope: true,
+    scope: {},
     compile: function()
     {
       return function(scope, element, attributes, ctrl, transclude)
@@ -128,6 +149,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     replace: true,
     templateUrl: 'scripts/directives/coffee-section.html',
     transclude: true,
+    scope: {},
     link: function(scope, element, attributes, ctrl, transclude)
     {
       element.find('.coffee-topic').append(transclude());
@@ -162,7 +184,6 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     restrict: 'E',
     replace: true,
     templateUrl: 'scripts/directives/forest-section.html',
-    priority: 2,
     transclude: true,
     scope: {
       icons:'=',
