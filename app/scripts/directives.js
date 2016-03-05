@@ -197,7 +197,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     {
       transclude(scope, function(clone)
       {
-        element.find('.slides').append(transclude());
+        element.find('.slides').append(clone);
       });
 
       var remove_watcher = scope.$watch('should_render', function(should_render)
@@ -286,7 +286,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     replace: true,
     templateUrl: 'scripts/directives/back-to-top-section.html',
     transclude: true,
-    link: function(scope, element, attributes, ctrl, transclude)
+    link: function(scope, element)
     {
       ui_services.inner_link_setup(element);
     }
