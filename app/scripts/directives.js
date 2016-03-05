@@ -212,7 +212,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
 
           ui_services.update_background(element, scope.background);
           ui_services.slider_setup(element);
-          scope.rendered = true;
+          //scope.rendered = true;
         }
       });
     }
@@ -283,6 +283,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     link: function(scope, element, attributes, ctrl, transclude)
     {
       scope.title = attributes.title;
+      scope.icon = attributes.icon;
 
       transclude(scope.$parent, function(clone, parent_scope)
       {
