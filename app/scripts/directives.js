@@ -169,7 +169,6 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     scope: true,
     link: function(scope, element, attributes, ctrl, transclude)
     {
-      console.debug('Running forest topic linking function. Scope id is:', scope.$id);
       scope.author = attributes.author;
       scope.from = attributes.from;
       if(attributes.active === 'true')
@@ -182,7 +181,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
       });
     }
   };
-}).directive('forestSection', ['$timeout', 'ui_services', function($timeout, ui_services)
+}).directive('forestSection', ['ui_services', function(ui_services)
 {
   return {
     restrict: 'E',
@@ -208,7 +207,6 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
             remove_watcher();
             return;
           }
-          console.log('Rendering forest section');
           scope.background = attributes.background + '.jpg';
           scope.title = attributes.title;
 
@@ -219,4 +217,112 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
       });
     }
   };
-}]);
+}]).directive('featuresTopic', function()
+{
+  return {
+    restrict: 'AE',
+    replace: true,
+    templateUrl: 'scripts/directives/features-section-topic.html',
+    transclude: true,
+    scope: true,
+    link: function(scope, element, attributes, ctrl, transclude)
+    {
+      scope.title = attributes.title;
+      scope.icon = attributes.icon;
+
+      transclude(scope.$parent, function(clone, parent_scope)
+      {
+        element.find('.right p').append(clone);
+        parent_scope.should_render = true;
+      });
+    }
+  };
+}).directive('featuresSection', function()
+{
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'scripts/directives/features-section.html',
+    transclude: true,
+    scope: {},
+    link: function(scope, element, attributes, ctrl, transclude)
+    {
+      scope.rendered = false;
+      scope.should_render = false;
+
+      transclude(scope, function(clone)
+      {
+        element.find('.features').append(clone);
+      });
+
+      var remove_watcher = scope.$watch('should_render', function(should_render)
+      {
+        if(should_render)
+        {
+          if(scope.rendered)
+          {
+            remove_watcher();
+            return;
+          }
+          scope.title = attributes.title;
+          scope.image = attributes.image + '.jpeg';
+          console.log(scope.image);
+          scope.rendered = true;
+        }
+      });
+    }
+  };
+}).directive('lastSectionTopic', function()
+{
+  return {
+    restrict: 'AE',
+    replace: true,
+    templateUrl: 'scripts/directives/last-section-topic.html',
+    transclude: true,
+    scope: true,
+    link: function(scope, element, attributes, ctrl, transclude)
+    {
+      scope.title = attributes.title;
+
+      transclude(scope.$parent, function(clone, parent_scope)
+      {
+        element.find('.feature p').append(clone);
+        parent_scope.should_render = true;
+      });
+    }
+  };
+}).directive('lastSection', function()
+{
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'scripts/directives/last-section.html',
+    transclude: true,
+    scope: {},
+    link: function(scope, element, attributes, ctrl, transclude)
+    {
+      scope.rendered = false;
+      scope.should_render = false;
+
+      transclude(scope, function(clone)
+      {
+        element.find('.list').append(clone);
+      });
+
+      var remove_watcher = scope.$watch('should_render', function(should_render)
+      {
+        if(should_render)
+        {
+          if(scope.rendered)
+          {
+            remove_watcher();
+            return;
+          }
+
+          scope.title = attributes.title;
+          scope.rendered = true;
+        }
+      });
+    }
+  };
+})
