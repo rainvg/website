@@ -229,12 +229,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     {
       scope.title = attributes.title;
       scope.icon = attributes.icon;
-
-      transclude(scope.$parent, function(clone, parent_scope)
-      {
-        element.find('.right p').append(clone);
-        parent_scope.should_render = true;
-      });
+      element.find('.right p').append(transclude());
     }
   };
 }).directive('featuresSection', function()
@@ -247,29 +242,9 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     scope: {},
     link: function(scope, element, attributes, ctrl, transclude)
     {
-      scope.rendered = false;
-      scope.should_render = false;
-
-      transclude(scope, function(clone)
-      {
-        element.find('.features').append(clone);
-      });
-
-      var remove_watcher = scope.$watch('should_render', function(should_render)
-      {
-        if(should_render)
-        {
-          if(scope.rendered)
-          {
-            remove_watcher();
-            return;
-          }
-          scope.title = attributes.title;
-          scope.image = attributes.image + '.jpeg';
-          console.log(scope.image);
-          scope.rendered = true;
-        }
-      });
+      element.find('.features').append(transclude());
+      scope.title = attributes.title;
+      scope.image = attributes.image + '.jpeg';
     }
   };
 }).directive('lastSectionTopic', function()
@@ -284,12 +259,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     {
       scope.title = attributes.title;
       scope.icon = attributes.icon;
-
-      transclude(scope.$parent, function(clone, parent_scope)
-      {
-        element.find('.feature p').append(clone);
-        parent_scope.should_render = true;
-      });
+      element.find('.feature p').append(transclude());
     }
   };
 }).directive('lastSection', function()
@@ -302,28 +272,9 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui
     scope: {},
     link: function(scope, element, attributes, ctrl, transclude)
     {
-      scope.rendered = false;
-      scope.should_render = false;
-
-      transclude(scope, function(clone)
-      {
-        element.find('.list').append(clone);
-      });
-
-      var remove_watcher = scope.$watch('should_render', function(should_render)
-      {
-        if(should_render)
-        {
-          if(scope.rendered)
-          {
-            remove_watcher();
-            return;
-          }
-
-          scope.title = attributes.title;
-          scope.rendered = true;
-        }
-      });
+      element.find('.list').append(transclude());
+      scope.title = attributes.title;
+      scope.rendered = true;
     }
   };
 })
