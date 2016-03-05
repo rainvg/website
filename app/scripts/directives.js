@@ -1,26 +1,76 @@
 'use strict';
 
-angular.module('rain.directives', ['rain.ui.services']).directive('navbar', ['ui_services', function(ui_services)
+angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', function()
+{
+  return {
+    restrict: 'AE',
+    replace: 'true',
+    templateUrl: 'scripts/directives/navbar-item.html',
+    scope: true,
+    transclude: true,
+    link: function(scope, element, attributes, ctrl, transclude)
+    {
+      console.debug('Running navbar-item linking function. Scope id is:', scope.$id);
+
+      scope.target = attributes.target;
+      
+      if(attributes.externalHref)
+        scope.target = attributes.externalHref;
+
+      transclude(scope.$parent, function(clone, parent_scope)
+      {
+        element.find('a:first').append(clone);
+        parent_scope.should_render = true;
+      });
+    }
+  };
+})
+.directive('navbar', ['ui_services', function(ui_services)
 {
   return {
     restrict: 'E',
     replace: true,
     templateUrl: 'scripts/directives/navbar.html',
-    controller: 'navbar-controller',
     scope: {},
-    link: function(scope, element)
+    transclude: true,
+    link: function(scope, element, attributes, ctrl, transclude)
     {
+      console.debug('Running navbar linking function. Scope id is:', scope.$id);
+      scope.rendered = false;
+      scope.should_render = false;
+
       var nav_properties = {nav_fixed: false, nav_scrolled: false, nav_out_of_sight: false};
 
-      window.addEventListener('scroll', function()
+      transclude(scope, function(clone)
       {
-        ui_services.navbar_fixer(element, nav_properties);
-        ui_services.inner_link_setup(element);
+        element.find('ul.menu').append(clone);
       });
 
-      ui_services.navbar_setup(element);
-      ui_services.navbar_dropdown_setup(element);
-      ui_services.inner_link_setup(element);
+      var remove_watcher = scope.$watch('should_render', function(should_render)
+      {
+        if(should_render)
+        {
+          if(scope.rendered)
+          {
+            remove_watcher();
+            return;
+          }
+
+          console.debug('Rendering navbar');
+
+          window.addEventListener('scroll', function()
+          {
+            ui_services.navbar_fixer(element, nav_properties);
+            ui_services.inner_link_setup(element);
+          });
+
+          ui_services.navbar_setup(element);
+          ui_services.navbar_dropdown_setup(element);
+          ui_services.inner_link_setup(element);
+
+          scope.rendered = true;
+        }
+      });
     }
   };
 }]).directive('videoSection', ['ui_services', function(ui_services)
