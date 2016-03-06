@@ -38,7 +38,7 @@ angular.module('rain.ui.services', []).service('ui_services', function()
       return;
     }
 
-    if (scroll_y > first_section_height)
+    if (scroll_y > first_section_height-55)
     {
       if (!nav_properties.nav_scrolled)
       {
@@ -297,7 +297,7 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     if($(element).find('.inner-link').length)
     {
       $(element).find('.inner-link').smoothScroll({
-        offset: 1,
+        offset: -54,
         speed: 1000
       });
     }
