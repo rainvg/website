@@ -67,11 +67,6 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
           ui_services.navbar_dropdown_setup(element);
           ui_services.inner_link_setup(element);
 
-          window.addEventListener('resize', function()
-          {
-            ui_services.inner_link_setup(element);
-          });
-
           scope.rendered = true;
         }
       });
@@ -285,10 +280,15 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
     {
       scope.title = attributes.title;
       scope.icon = attributes.icon;
-      element.find('.right p').append(transclude());
+
+      transclude(scope.$parent, function(clone, parent_scope)
+      {
+        element.find('.right p').append(clone);
+        parent_scope.should_render = true;
+      });
     }
   };
-}).directive('featuresSection', function()
+}).directive('featuresSection', ['ui_services', function(ui_services)
 {
   return {
     restrict: 'E',
@@ -298,12 +298,40 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
     scope: {},
     link: function(scope, element, attributes, ctrl, transclude)
     {
-      element.find('.features').append(transclude());
-      scope.title = attributes.title;
-      scope.image = attributes.image + '.jpeg';
+      scope.rendered = false;
+      scope.should_render = false;
+
+      transclude(scope, function(clone)
+      {
+        element.find('.features').append(clone);
+      });
+
+      var remove_watcher = scope.$watch('should_render', function(should_render)
+      {
+        if(should_render)
+        {
+          if(scope.rendered)
+          {
+            remove_watcher();
+            return;
+          }
+          scope.title = attributes.title;
+          scope.image = attributes.image + '.jpeg';
+
+          var children = element.find('.features').children();
+          ui_services.section_height_setup(element, children, 300);
+
+          window.addEventListener('resize', function()
+          {
+            ui_services.section_height_setup(element, children, 300);
+          });
+
+          scope.rendered = true;
+        }
+      });
     }
   };
-}).directive('lastSectionTopic', function()
+}]).directive('lastSectionTopic', function()
 {
   return {
     restrict: 'AE',

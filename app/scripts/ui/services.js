@@ -305,4 +305,15 @@ angular.module('rain.ui.services', []).service('ui_services', function()
       });
     }
   };
+
+  this.section_height_setup = function(element, children, offset)
+  {
+    var dim = offset;
+    children.each(function()
+    {
+      dim += $(this).outerHeight()
+      console.log($(this).outerHeight());
+    });
+    element.css('min-height', dim);
+  }
 });
