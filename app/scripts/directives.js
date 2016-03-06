@@ -67,6 +67,11 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
           ui_services.navbar_dropdown_setup(element);
           ui_services.inner_link_setup(element);
 
+          window.addEventListener('resize', function()
+          {
+            ui_services.inner_link_setup(element);
+          });
+
           scope.rendered = true;
         }
       });
