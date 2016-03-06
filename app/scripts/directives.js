@@ -13,7 +13,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       console.debug('Running navbar-item linking function. Scope id is:', scope.$id);
 
       scope.target = attributes.target;
-      
+
       if(attributes.externalHref)
         scope.target = attributes.externalHref;
 
@@ -61,7 +61,6 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
           window.addEventListener('scroll', function()
           {
             ui_services.navbar_fixer(element, nav_properties);
-            ui_services.inner_link_setup(element);
           });
 
           ui_services.navbar_setup(element);
