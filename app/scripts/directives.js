@@ -20,6 +20,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       transclude(scope.$parent, function(clone, parent_scope)
       {
         element.find('a:first').append(clone);
+        element.css('display','inline-block');
         parent_scope.should_render = true;
       });
     }
