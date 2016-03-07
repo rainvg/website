@@ -1,52 +1,80 @@
 /* File: gulpfile.js */
+'use strict';
 
 var gulp = require('gulp');
-var sass = require('gulp-sass');
-var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
+var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 var minifyCss = require('gulp-minify-css');
 var browserSync = require('browser-sync');
-var wiredep = require('wiredep').stream;
+var strip_css_comments = require('gulp-strip-css-comments');
+var useref = require('gulp-useref');
 
-gulp.task('bower', function ()
+gulp.task('js', ['html'], function ()
 {
-  console.log('launching bower task...');
-  gulp.src('app/index.html').pipe(wiredep()).pipe(gulp.dest('app'));
+  gulp.src([
+    'app/bower_components/jQuery/dist/jquery.min.js',
+    'app/bower_components/bootstrap/dist/js/bootstrap.min.js',
+    'app/bower_components/flexslider/jquery.flexslider-min.js',
+    'app/bower_components/lightbox2/dist/js/lightbox.min.js',
+    'app/bower_components/masonry/dist/masonry.pkgd.min.js',
+    'app/bower_components/angular/angular.min.js',
+    'app/scripts/ui/flickr.js',
+    'app/scripts/ui/twitterfetcher.min.js',
+    'app/scripts/ui/spectragram.min.js',
+    'app/scripts/ui/ytplayer.min.js',
+    'app/scripts/ui/countdown.min.js',
+    'app/scripts/app.js',
+    'app/scripts/controllers.js',
+    'app/scripts/directives.js',
+    'app/scripts/ui/services.js',
+    'app/scripts/ui/smooth-scroll.min.js',
+    'app/scripts/ui/parallax.js',
+    'app/scripts/ui/scripts.js'])
+    .pipe(concat('main.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist'));
 });
 
-gulp.task('sass', function()
+gulp.task('html', function()
 {
-  gulp.src('app/styles/sass/*.scss')
-  .pipe(sass().on('error', sass.logError))
-  .pipe(sourcemaps.init())
-  .pipe(minifyCss())
-  .pipe(sourcemaps.write())
-  .pipe(rename({suffix: '.min'}))
-  .pipe(gulp.dest('app/styles/css/'))
-  .pipe(browserSync.stream());
+  return gulp.src('app/*.html')
+    .pipe(useref())
+    .pipe(gulp.dest('dist'));
 });
 
-gulp.task('js', function ()
-{
-  return gulp.src('js/*js').pipe(uglify()).pipe(gulp.dest('dist/js'));
-});
-
-gulp.task('js-watch', ['js'], browserSync.reload);
+gulp.task('deploy', ['js']);
 
 gulp.task('serve', function()
 {
   browserSync.init({
-       server: "./app"
+       server: './app'
    });
 
-  gulp.watch("app/styles/sass/*.scss", ['sass']);
-  gulp.watch("app/*.html").on('change', browserSync.reload);
+  gulp.watch('app/*.html').on('change', browserSync.reload);
 
-  gulp.watch("app/scripts/*.js", ['js-watch']);
-
+  gulp.watch('app/scripts/**/*.js').on('change', browserSync.reload);
 });
+
+gulp.task('css', function()
+{
+  gulp.src([
+    'app/styles/css/bootstrap.css',
+    'app/styles/css/themify-icons.css',
+    'app/styles/css/flexslider.css',
+    'app/styles/css/lightbox.min.css',
+    'app/styles/css/ytplayer.css',
+    'app/styles/css/theme.css',
+    'app/styles/css/custom.css'
+  ]).pipe(strip_css_comments())
+  .pipe(sourcemaps.init())
+  .pipe(minifyCss())
+  .pipe(concat('style.min.css'))
+  .pipe(sourcemaps.write())
+  .pipe(gulp.dest('app/styles/css/'))
+  .pipe(browserSync.stream());
+});
+
 
 gulp.task('default', ['serve'], function()
 {

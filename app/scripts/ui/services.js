@@ -311,9 +311,8 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     var dim = offset;
     children.each(function()
     {
-      dim += $(this).outerHeight()
-      console.log($(this).outerHeight());
+      dim += $(this).outerHeight();
     });
     element.css('min-height', dim);
-  }
+  };
 });

@@ -67,6 +67,9 @@ node_modules
 # server files
 server
 
+# deploy files
+dist
+
 # bower components
 */bower_components
 
