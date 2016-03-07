@@ -5,7 +5,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     restrict: 'AE',
     replace: 'true',
-    templateUrl: 'scripts/directives/navbar-item.html',
+    templateUrl: 'scripts/directives/navbar/item.html',
     scope: true,
     transclude: true,
     link: function(scope, element, attributes, ctrl, transclude)
@@ -31,7 +31,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: 'scripts/directives/navbar.html',
+    templateUrl: 'scripts/directives/navbar/section.html',
     scope: {},
     transclude: true,
     link: function(scope, element, attributes, ctrl, transclude)
@@ -78,7 +78,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: 'scripts/directives/video-section.html',
+    templateUrl: 'scripts/directives/video/section.html',
     scope: {},
     link: function(scope, element, attributes)
     {
@@ -97,7 +97,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     restrict: 'AE',
     replace: true,
-    templateUrl: 'scripts/directives/about-us-topic.html',
+    templateUrl: 'scripts/directives/about-us/topic.html',
     transclude: true,
     scope: true,
     link: function(scope, element, attributes, ctrl, transclude)
@@ -121,7 +121,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: 'scripts/directives/about-us.html',
+    templateUrl: 'scripts/directives/about-us/section.html',
     transclude: true,
     scope: {},
     link: function(scope, element, attributes, ctrl, transclude)
@@ -180,7 +180,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     restrict: 'AE',
     replace: true,
-    templateUrl: 'scripts/directives/coffee-section-topic.html',
+    templateUrl: 'scripts/directives/parallax-portfolio/topic.html',
     transclude: true,
     scope: {},
     compile: function()
@@ -199,7 +199,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: 'scripts/directives/coffee-section.html',
+    templateUrl: 'scripts/directives/parallax-portfolio/section.html',
     transclude: true,
     scope: {},
     link: function(scope, element, attributes, ctrl, transclude)
@@ -216,7 +216,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     restrict: 'AE',
     replace: true,
-    templateUrl: 'scripts/directives/forest-section-topic.html',
+    templateUrl: 'scripts/directives/parallax-slider/topic.html',
     transclude: true,
     scope: true,
     link: function(scope, element, attributes, ctrl, transclude)
@@ -238,7 +238,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: 'scripts/directives/forest-section.html',
+    templateUrl: 'scripts/directives/parallax-slider/section.html',
     transclude: true,
     scope: {
       icons:'=',
@@ -274,7 +274,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     restrict: 'AE',
     replace: true,
-    templateUrl: 'scripts/directives/features-section-topic.html',
+    templateUrl: 'scripts/directives/features/topic.html',
     transclude: true,
     scope: true,
     link: function(scope, element, attributes, ctrl, transclude)
@@ -294,7 +294,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: 'scripts/directives/features-section.html',
+    templateUrl: 'scripts/directives/features/section.html',
     transclude: true,
     scope: {},
     link: function(scope, element, attributes, ctrl, transclude)
@@ -337,7 +337,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     restrict: 'AE',
     replace: true,
-    templateUrl: 'scripts/directives/last-section-topic.html',
+    templateUrl: 'scripts/directives/modules/topic.html',
     transclude: true,
     scope: true,
     link: function(scope, element, attributes, ctrl, transclude)
@@ -352,7 +352,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: 'scripts/directives/last-section.html',
+    templateUrl: 'scripts/directives/modules/section.html',
     transclude: true,
     scope: {},
     link: function(scope, element, attributes, ctrl, transclude)
@@ -367,7 +367,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: 'scripts/directives/back-to-top-section.html',
+    templateUrl: 'scripts/directives/back-to-top/section.html',
     transclude: true,
     link: function(scope, element)
     {
