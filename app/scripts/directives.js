@@ -116,7 +116,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       });
     }
   };
-}).directive('aboutUsSection', function()
+}).directive('aboutUs', function()
 {
   return {
     restrict: 'E',
@@ -175,7 +175,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       });
     }
   };
-}).directive('coffeeTopic', function()
+}).directive('parallaxPortfolioTopic', function()
 {
   return {
     restrict: 'AE',
@@ -194,7 +194,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       };
     }
   };
-}).directive('coffeeSection', ['ui_services', function(ui_services)
+}).directive('parallaxPortfolio', ['ui_services', function(ui_services)
 {
   return {
     restrict: 'E',
@@ -211,7 +211,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       ui_services.update_background(element, scope.background);
     }
   };
-}]).directive('forestTopic', function()
+}]).directive('parallaxSliderTopic', function()
 {
   return {
     restrict: 'AE',
@@ -233,7 +233,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       });
     }
   };
-}).directive('forestSection', ['ui_services', function(ui_services)
+}).directive('parallaxSlider', ['ui_services', function(ui_services)
 {
   return {
     restrict: 'E',
@@ -289,7 +289,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       });
     }
   };
-}).directive('featuresSection', ['ui_services', function(ui_services)
+}).directive('features', ['ui_services', function(ui_services)
 {
   return {
     restrict: 'E',
@@ -332,7 +332,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       });
     }
   };
-}]).directive('lastSectionTopic', function()
+}]).directive('modulesTopic', function()
 {
   return {
     restrict: 'AE',
@@ -347,7 +347,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       element.find('.feature p').append(transclude());
     }
   };
-}).directive('lastSection', function()
+}).directive('modules', function()
 {
   return {
     restrict: 'E',
@@ -362,7 +362,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       scope.rendered = true;
     }
   };
-}).directive('backToTopSection', ['ui_services', function(ui_services)
+}).directive('backToTop', ['ui_services', function(ui_services)
 {
   return {
     restrict: 'E',
