@@ -221,6 +221,17 @@ hr.short-thick {
     display: block !important;
   }
 }
+
+@media all and (max-height: 500px)
+{
+  .cover.fullscreen .container
+  {
+    top: 80px;
+    transform: none;
+    -webkit-transform: none;
+  }
+}
+
 .v-align-transform {
   position: relative;
   transform: translate3d(0, -50%, 0);
@@ -734,6 +745,8 @@ footer.bg-dark li,
 .main-container > a:first-child + .parallax .background-image-holder {
   top: 0;
 }
+
+
 @media all and (max-width: 767px) {
   .parallax > .background-image-holder,
   .parallax .slides li > .background-image-holder {
