@@ -608,7 +608,6 @@ footer.footer-1.floating {
     position: fixed !important;
     bottom: 0 !important;
     width: 100%;
-    padding: 40px !important;
     z-index: 10 !important;
     background-color: rgba(0, 0, 0, 0);
     display: none;
@@ -620,7 +619,7 @@ footer.footer-1.floating .back-to-top
 }
 footer.footer-1.floating a:hover
 {
-    background-color: rgba(0, 0, 0, 0.9) !important;
+    background-color: rgba(0, 0, 0, 0.9);
     border-color: rgba(255,255,255,0.9);
 }
 .fullscreen {
