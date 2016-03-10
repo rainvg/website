@@ -362,17 +362,28 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       scope.rendered = true;
     }
   };
-}).directive('backToTop', ['ui_services', function(ui_services)
+}).directive('last', ['ui_services', function(ui_services)
 {
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: 'scripts/directives/back-to-top/section.html',
+    templateUrl: 'scripts/directives/last/section.html',
     transclude: true,
-    link: function(scope, element)
+    link: function(scope, element, attributes)
     {
       ui_services.inner_link_setup(element);
-
+    }
+  };
+}]).directive('floatingBackToTop', ['ui_services', function(ui_services)
+{
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'scripts/directives/last/floating-back-to-top.html',
+    transclude: true,
+    link: function(scope, element, attributes)
+    {
+      ui_services.inner_link_setup(element);
       window.addEventListener('scroll', function()
       {
         ui_services.footer_show(element);

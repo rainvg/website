@@ -319,13 +319,16 @@ angular.module('rain.ui.services', []).service('ui_services', function()
   this.footer_show = function(element)
   {
     var first_section_height = $('.main-container section:nth-of-type(1)').outerHeight(true);
+    var last_section_position = $('.main-container section:nth-last-of-type(1)').offset().top;
+    var last_section_height = $('.main-container section:nth-last-of-type(1)').outerHeight(true);
     var nav_outer_height = $('body .nav-container nav:first').outerHeight();
     var offset = -55;
     var scroll_y = window.pageYOffset;
-
-    if(scroll_y > first_section_height + nav_outer_height + offset)
+    console.log(last_section_position);
+    if(scroll_y > first_section_height + nav_outer_height + offset && scroll_y + window.innerHeight <= last_section_position + last_section_height)
       element.addClass('visible');
     else
       element.removeClass('visible');
+
   };
 });
