@@ -315,4 +315,17 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     });
     element.css('min-height', dim);
   };
+
+  this.footer_show = function(element)
+  {
+    var first_section_height = $('.main-container section:nth-of-type(1)').outerHeight(true);
+    var nav_outer_height = $('body .nav-container nav:first').outerHeight();
+    var offset = -55;
+    var scroll_y = window.pageYOffset;
+
+    if(scroll_y > first_section_height + nav_outer_height + offset)
+      element.css('display','block');
+    else
+      element.css('display','none');
+  };
 });

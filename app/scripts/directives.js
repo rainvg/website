@@ -372,6 +372,11 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
     link: function(scope, element)
     {
       ui_services.inner_link_setup(element);
+
+      window.addEventListener('scroll', function()
+      {
+        ui_services.footer_show(element);
+      });
     }
   };
 }]);
