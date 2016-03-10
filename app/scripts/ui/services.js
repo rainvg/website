@@ -324,8 +324,8 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     var scroll_y = window.pageYOffset;
 
     if(scroll_y > first_section_height + nav_outer_height + offset)
-      element.css('display','block');
+      element.addClass('visible');
     else
-      element.css('display','none');
+      element.removeClass('visible');
   };
 });
