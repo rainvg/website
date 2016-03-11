@@ -391,4 +391,18 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       });
     }
   };
+}]).directive('policy', ['ui_services', function(ui_services)
+{
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'scripts/directives/policy/section.html',
+    transclude: true,
+    scope: {},
+    link: function(scope, element, attributes, ctrl, transclude)
+    {
+      ui_services.modal_strip_setup(element);
+      scope.href = attributes.href;
+    }
+  };
 }]);

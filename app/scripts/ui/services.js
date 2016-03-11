@@ -300,13 +300,12 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     var link = $(element).find('.inner-link');
     var offset = 1;
 
-    var link_nodes = document.getElementsByClassName('inner-link');
+    var link_nodes = $('.inner-link');
     for(var i = 0; i < link_nodes.length; i++)
       if(link_nodes[i].classList.contains('back-to-top') && !link_nodes[i].classList.contains('floating'))
         link_nodes[i].addEventListener('click', function()
         {
-          var back_to_top = $(document).find('.back-to-top.floating');
-          back_to_top.addClass('forced-hidden');
+          $(document).find('.back-to-top.floating').addClass('forced-hidden');
         });
 
     if(link.length)
@@ -348,6 +347,37 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     {
       element.find('.back-to-top').removeClass('visible');
     }
-
   };
+
+  this.modal_strip_setup = function(element)
+  {
+    if(!element.find('.close-modal').length)
+      element.append($('<i class="ti-close close-modal">'));
+
+    if(typeof element.attr('data-cookie') !== "undefined")
+    {
+      if(!mr_cookies.hasItem(element.attr('data-cookie')))
+        setTimeout(function()
+        {
+          element.addClass('reveal-modal');
+        },1000);
+    }
+    else
+      setTimeout(function()
+      {
+        element.addClass('reveal-modal');
+      },1000);
+
+    $('.modal-strip .close-modal').click(function()
+    {
+      console.log("esco");
+      var modal = element.closest('.modal-strip');
+      if(typeof modal.attr('data-cookie') != "undefined")
+      {
+        mr_cookies.setItem(modal.attr('data-cookie'), "true", Infinity);
+      }
+      element.closest('.modal-strip').removeClass('reveal-modal');
+      return false;
+    });
+  }
 });
