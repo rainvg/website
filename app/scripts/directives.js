@@ -374,7 +374,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       ui_services.inner_link_setup(element);
     }
   };
-}]).directive('floatingBackToTop', ['ui_services', function(ui_services)
+}]).directive('floatingBackToTop', ['$timeout', 'ui_services', function($timeout, ui_services)
 {
   return {
     restrict: 'E',
@@ -384,9 +384,10 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
     link: function(scope, element, attributes)
     {
       ui_services.inner_link_setup(element);
+
       window.addEventListener('scroll', function()
       {
-        ui_services.footer_show(element);
+        ui_services.floating_back_to_top_show(element);
       });
     }
   };

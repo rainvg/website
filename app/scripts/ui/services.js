@@ -297,10 +297,23 @@ angular.module('rain.ui.services', []).service('ui_services', function()
 
   this.inner_link_setup = function(element)
   {
-    if($(element).find('.inner-link').length)
+    var link = $(element).find('.inner-link');
+    var offset = 1;
+
+    var link_nodes = document.getElementsByClassName('inner-link');
+    for(var i = 0; i < link_nodes.length; i++)
+      if(link_nodes[i].classList.contains('back-to-top') && !link_nodes[i].classList.contains('floating'))
+        link_nodes[i].addEventListener('click', function()
+        {
+          var back_to_top = $(document).find('.back-to-top.floating');
+          back_to_top.addClass('forced-hidden');
+        });
+
+    if(link.length)
     {
-      $(element).find('.inner-link').smoothScroll({
-        offset: 1,
+      if(link.attr('href') == '#top') offset = 0;
+      link.smoothScroll({
+        offset: offset,
         speed: 1000
       });
     }
@@ -316,19 +329,25 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     element.css('min-height', dim);
   };
 
-  this.footer_show = function(element)
+  this.floating_back_to_top_show = function(element)
   {
     var first_section_height = $('.main-container section:nth-of-type(1)').outerHeight(true);
     var last_section_position = $('.main-container section:nth-last-of-type(1)').offset().top;
     var last_section_height = $('.main-container section:nth-last-of-type(1)').outerHeight(true);
-    var nav_outer_height = $('body .nav-container nav:first').outerHeight();
-    var offset = -55;
     var scroll_y = window.pageYOffset;
-    console.log(last_section_position);
-    if(scroll_y > first_section_height + nav_outer_height + offset && scroll_y + window.innerHeight <= last_section_position + last_section_height)
-      element.addClass('visible');
+    if(scroll_y < first_section_height)
+    {
+      element.find('.back-to-top').removeClass('forced-hidden');
+      element.find('.back-to-top').removeClass('visible');
+    }
+    else if(scroll_y > first_section_height && scroll_y + window.innerHeight <= last_section_position + last_section_height)
+    {
+      element.find('.back-to-top').addClass('visible');
+    }
     else
-      element.removeClass('visible');
+    {
+      element.find('.back-to-top').removeClass('visible');
+    }
 
   };
 });

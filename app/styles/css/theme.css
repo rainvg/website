@@ -620,6 +620,10 @@ footer {
   transition: opacity 0.6s, visibility 0.6s;
   visibility: visible;
 }
+.back-to-top.floating.forced-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
 .back-to-top.floating:hover
 {
   opacity: 1;
