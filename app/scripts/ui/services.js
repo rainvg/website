@@ -297,21 +297,33 @@ angular.module('rain.ui.services', []).service('ui_services', function()
 
   this.inner_link_setup = function(element)
   {
-    var link = $(element).find('.inner-link');
+    var links = $(element).find('.inner-link');
     var offset = 1;
+    var delay = 200;
+    var timeout = null;
 
-    var link_nodes = $('.inner-link');
-    for(var i = 0; i < link_nodes.length; i++)
-      if(link_nodes[i].classList.contains('back-to-top') && !link_nodes[i].classList.contains('floating'))
-        link_nodes[i].addEventListener('click', function()
-        {
-          $(document).find('.back-to-top.floating').addClass('forced-hidden');
-        });
-
-    if(link.length)
+    links.each(function()
     {
-      if(link.attr('href') == '#top') offset = 0;
-      link.smoothScroll({
+      this.addEventListener('click', function()
+      {
+        $(document).find('.back-to-top.floating').addClass('forced-hidden');
+      });
+
+      window.addEventListener('scroll',function()
+      {
+        clearTimeout(timeout);
+        timeout = setTimeout(function()
+        {
+          $(document).find('.back-to-top.floating').removeClass('forced-hidden');
+        },delay);
+      });
+    })
+
+    if(links.length)
+    {
+      if(links.attr('href') === '#top') offset = 0;
+      links.smoothScroll(
+        {
         offset: offset,
         speed: 1000
       });
