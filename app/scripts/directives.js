@@ -401,8 +401,52 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
     scope: {},
     link: function(scope, element, attributes, ctrl, transclude)
     {
-      ui_services.modal_strip_setup(element);
       scope.href = attributes.href;
+      ui_services.modal_strip_setup(element);
+    }
+  };
+}]).directive('customersTopic', function()
+{
+  return {
+    restrict: 'AE',
+    replace: true,
+    templateUrl: 'scripts/directives/customers/topic.html',
+    transclude: true,
+    scope: true,
+    link: function(scope, element, attributes, ctrl, transclude)
+    {
+      scope.title = attributes.title;
+      if(attributes.align === 'right')
+        element.addClass('text-right');
+    }
+  };
+}).directive('customersIcon', function()
+{
+  return {
+    restrict: 'AE',
+    replace: true,
+    templateUrl: 'scripts/directives/customers/icon.html',
+    scope: true,
+    link: function(scope, element, attributes)
+    {
+      scope.icon = attributes.icon;
+    }
+  };
+}).directive('customers', ['ui_services', function(ui_services)
+{
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'scripts/directives/customers/section.html',
+    transclude: true,
+    scope: {},
+    link: function(scope, element, attributes, ctrl, transclude)
+    {
+      scope.title = attributes.title;
+      scope.button = attributes.button;
+      scope.link = attributes.link;
+      scope.background = attributes.background + '.jpg';
+      ui_services.update_background(element, scope.background);
     }
   };
 }]);
