@@ -316,8 +316,18 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
             remove_watcher();
             return;
           }
+
           scope.title = attributes.title;
           scope.image = attributes.image + '.jpeg';
+          var image = element.find('.image');
+          var container = element.find('.container');
+          if(attributes.textalign === 'right')
+          {
+            image.removeClass("col-sm-push-6");
+            image.removeClass("col-md-push-6");
+            container.removeClass("col-sm-pull-6");
+            container.removeClass("col-md-pull-6");
+          }
 
           var children = element.find('.features').children();
           ui_services.section_height_setup(element, children, 300);

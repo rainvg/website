@@ -5202,6 +5202,9 @@ footer.bg-dark a {
 .mt160 {
   margin-top: 160px;
 }
+.p64 {
+  padding: 0 64px;
+}
 .p32 {
   padding: 0 32px;
 }
