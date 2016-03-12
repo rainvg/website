@@ -413,7 +413,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
     templateUrl: 'scripts/directives/customers/topic.html',
     transclude: true,
     scope: true,
-    link: function(scope, element, attributes, ctrl, transclude)
+    link: function(scope, element, attributes)
     {
       scope.title = attributes.title;
       if(attributes.align === 'right')
@@ -447,6 +447,45 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       scope.link = attributes.link;
       scope.background = attributes.background + '.jpg';
       ui_services.update_background(element, scope.background);
+    }
+  };
+}]).directive('postsTopic', function()
+{
+  return {
+    restrict: 'AE',
+    replace: true,
+    templateUrl: 'scripts/directives/posts/topic.html',
+    transclude: true,
+    scope: {},
+    compile: function()
+    {
+      return function(scope, element, attributes, ctrl, transclude)
+      {
+        scope.title = attributes.title;
+        scope.link = attributes.link;
+        scope.icon = attributes.icon + '.jpg';
+        scope.date = attributes.date;
+        scope.authorlink = attributes.authorlink;
+        scope.author = attributes.author;
+        scope.categorylink = attributes.categorylink;
+        scope.category = attributes.category;
+
+        element.find('.mb0').append(transclude());
+      };
+    }
+  };
+}).directive('posts', ['ui_services', function(ui_services)
+{
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'scripts/directives/posts/section.html',
+    transclude: true,
+    scope: {},
+    link: function(scope, element, attributes, ctrl, transclude)
+    {
+      element.find('.row').append(transclude());
+      scope.name = attributes.name;
     }
   };
 }]);
