@@ -326,7 +326,7 @@ angular.module('rain.ui.services', []).service('ui_services', function()
       links.smoothScroll(
         {
         offset: offset,
-        speed: 1000
+        speed: 800
       });
     }
   };

@@ -431,6 +431,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
     link: function(scope, element, attributes)
     {
       scope.href = attributes.href;
+      scope.buttontext = attributes.buttontext;
       ui_services.modal_strip_setup(element);
     }
   };
@@ -498,7 +499,6 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
         scope.author = attributes.author;
         scope.categorylink = attributes.categorylink;
         scope.category = attributes.category;
-
         element.find('.mb0').append(transclude());
       };
     }
