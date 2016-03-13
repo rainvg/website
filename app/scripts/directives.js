@@ -289,7 +289,23 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       });
     }
   };
-}).directive('features', ['ui_services', function(ui_services)
+}).directive('featuresButton', ['ui_services', function(ui_services)
+{
+  return {
+    restrict: 'AE',
+    transclude: true,
+    scope: {},
+    link: function(scope, element, attributes, ctrl, transclude)
+    {
+      var href = attributes.href;
+      var text = transclude().text();
+      transclude(scope.$parent, function(clone, parent_scope)
+      {
+        parent_scope.button = ui_services.generate_centered_button(text, href);
+      });
+    }
+  };
+}]).directive('features', ['ui_services', function(ui_services)
 {
   return {
     restrict: 'E',
@@ -305,6 +321,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       transclude(scope, function(clone)
       {
         element.find('.features').append(clone);
+        element.find('.button').append('<a class="btn btn-lg col-md-2 col-sm-2 col-md-push-5 col-sm-push-5" ng-href="{{href}}">Text</a>');
       });
 
       var remove_watcher = scope.$watch('should_render', function(should_render)
@@ -317,16 +334,18 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
             return;
           }
 
+          element.find('.features-button').append(scope.button);
           scope.title = attributes.title;
           scope.image = attributes.image + '.jpeg';
+
           var image = element.find('.image');
           var container = element.find('.container');
           if(attributes.textalign === 'right')
           {
-            image.removeClass("col-sm-push-6");
-            image.removeClass("col-md-push-6");
-            container.removeClass("col-sm-pull-6");
-            container.removeClass("col-md-pull-6");
+            image.removeClass('col-sm-push-6');
+            image.removeClass('col-md-push-6');
+            container.removeClass('col-sm-pull-6');
+            container.removeClass('col-md-pull-6');
           }
 
           var children = element.find('.features').children();
@@ -379,7 +398,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
     replace: true,
     templateUrl: 'scripts/directives/last/section.html',
     transclude: true,
-    link: function(scope, element, attributes)
+    link: function(scope, element)
     {
       ui_services.inner_link_setup(element);
     }
@@ -391,7 +410,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
     replace: true,
     templateUrl: 'scripts/directives/last/floating-back-to-top.html',
     transclude: true,
-    link: function(scope, element, attributes)
+    link: function(scope, element)
     {
       ui_services.inner_link_setup(element);
 
@@ -409,7 +428,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
     templateUrl: 'scripts/directives/policy/section.html',
     transclude: true,
     scope: {},
-    link: function(scope, element, attributes, ctrl, transclude)
+    link: function(scope, element, attributes)
     {
       scope.href = attributes.href;
       ui_services.modal_strip_setup(element);
@@ -450,7 +469,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
     templateUrl: 'scripts/directives/customers/section.html',
     transclude: true,
     scope: {},
-    link: function(scope, element, attributes, ctrl, transclude)
+    link: function(scope, element, attributes)
     {
       scope.title = attributes.title;
       scope.button = attributes.button;
@@ -484,7 +503,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       };
     }
   };
-}).directive('posts', ['ui_services', function(ui_services)
+}).directive('posts', function()
 {
   return {
     restrict: 'E',
@@ -498,4 +517,4 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       scope.name = attributes.name;
     }
   };
-}]);
+});

@@ -318,7 +318,7 @@ angular.module('rain.ui.services', []).service('ui_services', function()
           $(document).find('.back-to-top.floating').removeClass('forced-hidden');
         },delay);
       });
-    })
+    });
 
     if(links.length)
     {
@@ -360,7 +360,7 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     if(!element.find('.close-modal').length)
       element.append($('<i class="ti-close close-modal">'));
 
-    if(typeof element.attr('data-cookie') !== "undefined")
+    if(typeof element.attr('data-cookie') !== 'undefined')
     {
       if(!mr_cookies.hasItem(element.attr('data-cookie')))
         setTimeout(function()
@@ -376,14 +376,23 @@ angular.module('rain.ui.services', []).service('ui_services', function()
 
     $('.modal-strip .close-modal').click(function()
     {
-      console.log("esco");
       var modal = element.closest('.modal-strip');
-      if(typeof modal.attr('data-cookie') != "undefined")
+      if(typeof modal.attr('data-cookie') !== 'undefined')
       {
-        mr_cookies.setItem(modal.attr('data-cookie'), "true", Infinity);
+        mr_cookies.setItem(modal.attr('data-cookie'), 'true', Infinity);
       }
       element.closest('.modal-strip').removeClass('reveal-modal');
       return false;
     });
-  }
+  };
+
+  this.generate_centered_button = function(text, href)
+  {
+    var classes, button;
+
+    href = ' href="' + href + '"';
+    classes = ' class = "btn btn-lg col-md-2 col-sm-2 col-md-push-5 col-sm-push-5"';
+    button = $('<a' + classes + href + '>' + text + '</a>');
+    return button;
+  };
 });
