@@ -386,12 +386,12 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     });
   };
 
-  this.generate_centered_button = function(text, href)
+  this.generate_button = function(text, href)
   {
     var classes, button;
 
     href = ' href="' + href + '"';
-    classes = ' class = "btn btn-lg col-md-2 col-sm-2 col-md-push-5 col-sm-push-5"';
+    classes = ' class = "btn btn-lg"';
     button = $('<a' + classes + href + '>' + text + '</a>');
     return button;
   };

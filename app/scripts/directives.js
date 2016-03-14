@@ -301,7 +301,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       var text = transclude().text();
       transclude(scope.$parent, function(clone, parent_scope)
       {
-        parent_scope.button = ui_services.generate_centered_button(text, href);
+        parent_scope.button = ui_services.generate_button(text, href);
       });
     }
   };
