@@ -479,7 +479,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       ui_services.update_background(element, scope.background);
     }
   };
-}]).directive('postsTopic', function()
+}]).directive('post', function()
 {
   return {
     restrict: 'AE',
@@ -503,7 +503,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       };
     }
   };
-}).directive('posts', function()
+}).directive('blog', function()
 {
   return {
     restrict: 'E',
