@@ -1,0 +1,44 @@
+{
+  "name": "rainws",
+  "version": "1.0.0",
+  "description": "Rain website",
+  "main": "server/https-server.js",
+  "scripts": {
+    "start": "sudo node ./server/https-server.js",
+    "test": "./node_modules/.bin/mocha test/index.js",
+    "lint": "gulp lint",
+    "git-add": "git add .",
+    "git-commit": "git commit -m",
+    "commit": "gulp && npm run git-add && npm run git-commit",
+    "push": "git push origin master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainvg/website.git"
+  },
+  "keywords": [
+    "rain",
+    "website"
+  ],
+  "author": "rain.vg team (https://github.com/rainvg)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rainvg/website/issues"
+  },
+  "homepage": "https://github.com/rainvg/website#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "http": "0.0.0",
+    "https": "^1.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-strip-css-comments": "^1.2.0",
+    "gulp-useref": "^3.0.7",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0"
+  }
+}
