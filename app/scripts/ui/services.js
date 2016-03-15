@@ -311,7 +311,6 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     {
       this.addEventListener('click', function()
       {
-        console.log($(document).find('.back-to-top.floating'));
         $(document).find('.back-to-top.floating').addClass('forced-hidden');
       });
 
@@ -352,6 +351,7 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     var last_section_position = $('.main-container section:nth-last-of-type(1)').offset().top;
     var last_section_height = $('.main-container section:nth-last-of-type(1)').outerHeight(true);
     var scroll_y = window.pageYOffset;
+
     if(scroll_y < first_section_height)
       element.find('.back-to-top').removeClass('visible');
     else if(scroll_y > first_section_height && scroll_y + window.innerHeight <= last_section_position + last_section_height)

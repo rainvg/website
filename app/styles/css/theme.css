@@ -5073,6 +5073,11 @@ footer.bg-dark a {
 .bg-light .social-list a {
   color: #222;
 }
+@media all and (max-width: 990px) {
+  .back-to-top {
+    display: none;
+  }
+}
 .back-to-top {
   position: absolute;
   left: 50%;
