@@ -8,7 +8,11 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     background.css('background', 'url("' + background_image + '")');
     background.children('img').hide();
     background.css('background-position', 'initial');
-    background.css('min-height', '100%');
+
+    setTimeout(function()
+    {
+      background.addClass('fadeIn');
+    }, 200);
   };
 
   this.navbar_fixer = function(element, nav_properties)

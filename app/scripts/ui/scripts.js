@@ -3,9 +3,6 @@
 var mr_firstSectionHeight,
     mr_nav,
     mr_navOuterHeight,
-    mr_navScrolled = false,
-    mr_navFixed = false,
-    mr_outOfSight = false,
     mr_floatingProjectSections,
     mr_scrollTop = 0;
 
@@ -13,7 +10,7 @@ $(document).ready(function()
 {
 
   // Smooth scroll to inner links
-
+/*
   $('.inner-link').each(function()
   {
     var href = $(this).attr('href');
@@ -28,16 +25,16 @@ $(document).ready(function()
 			speed: 800
 		});
   }
-
+*/
   // Update scroll variable for scrolling functions
-
+/*
   addEventListener('scroll', function()
   {
     mr_scrollTop = window.pageYOffset;
   }, false);
-
+*/
   // Append .background-image-holder <img>'s as CSS backgrounds
-
+/*
   $('.background-image-holder').each(function() {
       var imgSrc = $(this).children('img').attr('src');
       $(this).css('background', 'url("' + imgSrc + '")');
@@ -54,7 +51,7 @@ $(document).ready(function()
       $(this).addClass('fadeIn');
     });
   }, 200);
-
+*/
   // Initialize Tooltips
 
   $('[data-toggle="tooltip"]').tooltip();
