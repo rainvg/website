@@ -43,7 +43,7 @@ angular.module('rain.ui.services', []).service('ui_services', function()
       return;
     }
 
-    if (scroll_y > first_section_height)
+    if (scroll_y >= first_section_height)
     {
       if (!nav_properties.nav_scrolled)
       {
@@ -118,7 +118,7 @@ angular.module('rain.ui.services', []).service('ui_services', function()
         nav.addClass('outOfSight');
         nav_properties.nav_scrolled = true;
       }
-    }, 200);
+    }, 500);
 
     if (!nav.hasClass('fixed') && !nav.hasClass('absolute'))
     {
@@ -320,7 +320,6 @@ angular.module('rain.ui.services', []).service('ui_services', function()
   this.inner_link_setup = function(element)
   {
     var links = $(element).find('.inner-link');
-    var offset = 1;
     var delay = 200;
     var timeout = null;
 
@@ -341,12 +340,13 @@ angular.module('rain.ui.services', []).service('ui_services', function()
       });
     });
 
+    console.log(links);
     if(links.length)
     {
       if(links.attr('href') === '#top') offset = 0;
       links.smoothScroll(
         {
-        offset: offset,
+        offset: 0,
         speed: 800
       });
     }
