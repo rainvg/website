@@ -77,3 +77,6 @@ dist
 *.key
 *.crt
 *.csr
+
+# Private jsons
+ssh_config.json

@@ -1,6 +1,8 @@
 /* File: gulpfile.js */
+
 'use strict';
 
+var fs = require('fs');
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
@@ -9,31 +11,24 @@ var minifyCss = require('gulp-minify-css');
 var browserSync = require('browser-sync');
 var strip_css_comments = require('gulp-strip-css-comments');
 var useref = require('gulp-useref');
+var gulp_ssh = require('gulp-ssh');
+
+var config = JSON.parse(fs.readFileSync('./ssh_config.json','utf8'));
+
+var ssh = new gulp_ssh({
+  sshConfig: config
+});
 
 gulp.task('js', ['html'], function ()
 {
-  gulp.src([
-    'app/bower_components/jQuery/dist/jquery.min.js',
-    'app/bower_components/bootstrap/dist/js/bootstrap.min.js',
-    'app/bower_components/flexslider/jquery.flexslider-min.js',
-    'app/bower_components/lightbox2/dist/js/lightbox.min.js',
-    'app/bower_components/masonry/dist/masonry.pkgd.min.js',
-    'app/bower_components/angular/angular.min.js',
-    'app/scripts/ui/flickr.js',
-    'app/scripts/ui/twitterfetcher.min.js',
-    'app/scripts/ui/spectragram.min.js',
-    'app/scripts/ui/ytplayer.min.js',
-    'app/scripts/ui/countdown.min.js',
-    'app/scripts/app.js',
-    'app/scripts/controllers.js',
-    'app/scripts/directives.js',
-    'app/scripts/ui/services.js',
-    'app/scripts/ui/smooth-scroll.min.js',
-    'app/scripts/ui/parallax.js',
-    'app/scripts/ui/scripts.js'])
-    .pipe(concat('main.min.js'))
+  gulp.src('dist/main.min.js')
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
+});
+
+gulp.task('scp', function()
+{
+  return gulp.src('app/**/*').pipe(ssh.dest('/home/rain/test'));
 });
 
 gulp.task('html', function()
