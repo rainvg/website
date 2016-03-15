@@ -12,11 +12,12 @@ var browserSync = require('browser-sync');
 var strip_css_comments = require('gulp-strip-css-comments');
 var useref = require('gulp-useref');
 var gulp_ssh = require('gulp-ssh');
+var del = require('del');
 var config;
 
 gulp.task('js', ['html'], function ()
 {
-  gulp.src('dist/main.min.js')
+  return gulp.src('dist/main.min.js')
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
@@ -29,10 +30,53 @@ try
     sshConfig: config
   });
 
-  gulp.task('scp', function()
+  gulp.task('setup_server_folder', ['js'], function()
   {
-    return gulp.src('app/**/*').pipe(ssh.dest('/home/rain/test'));
+    return gulp.src(['./**/*', './.*', '!app/**/*', '!**/node_modules/**/*', '!dist/**/*', '!logs/**/*', '!ssh_config.json'])
+      .pipe(ssh.dest('/home/rain/tmp'));
   });
+
+  gulp.task('deploy_assets', ['setup_server_folder'], function()
+  {
+    return gulp.src('app/assets/**/*')
+      .pipe(ssh.dest('/home/rain/tmp/app/assets'));
+  });
+
+  gulp.task('deploy_css', ['deploy_assets'], function()
+  {
+    return gulp.src(['app/styles/**/*'])
+    .pipe(ssh.dest('/home/rain/tmp/app/styles'));
+  });
+
+  gulp.task('deploy_js', ['deploy_css'], function()
+  {
+    return gulp.src(['app/scripts/directives/**/*'])
+    .pipe(ssh.dest('/home/rain/tmp/app/scripts/directives'));
+  });
+
+  gulp.task('deploy_minified_files', ['deploy_js'], function()
+  {
+    return gulp.src(['app/favicon.ico', 'app/robots.txt', 'dist/index.html', 'dist/main.min.js'])
+      .pipe(ssh.dest('/home/rain/tmp/app'));
+  });
+
+  gulp.task('server_package_manager', ['deploy_minified_files'], function()
+  {
+    return ssh.shell(['cd tmp', 'npm install', 'bower install']);
+  });
+
+  gulp.task('server_setup', ['server_package_manager'], function()
+  {
+     return ssh.shell(['cd', 'mv website old', 'mv tmp website', 'rm -rf old'], {filePath: 'setup.log'})
+      .pipe(gulp.dest('logs'));
+  });
+
+  gulp.task('clean_dist', ['server_setup'],function()
+  {
+    return del(['dist']);
+  });
+
+  gulp.task('deploy', ['clean_dist']);
 }
 catch (e)
 {
@@ -45,8 +89,6 @@ gulp.task('html', function()
     .pipe(useref())
     .pipe(gulp.dest('dist'));
 });
-
-gulp.task('deploy', ['js']);
 
 gulp.task('serve', function()
 {
@@ -61,7 +103,7 @@ gulp.task('serve', function()
 
 gulp.task('css', function()
 {
-  gulp.src([
+  return gulp.src([
     'app/styles/css/bootstrap.css',
     'app/styles/css/themify-icons.css',
     'app/styles/css/flexslider.css',
@@ -77,7 +119,6 @@ gulp.task('css', function()
   .pipe(gulp.dest('app/styles/css/'))
   .pipe(browserSync.stream());
 });
-
 
 gulp.task('default', ['serve'], function()
 {

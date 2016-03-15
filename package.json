@@ -32,6 +32,7 @@
     "https": "^1.0.0"
   },
   "devDependencies": {
+    "del": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-jshint": "^2.0.0",
