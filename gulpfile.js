@@ -12,12 +12,7 @@ var browserSync = require('browser-sync');
 var strip_css_comments = require('gulp-strip-css-comments');
 var useref = require('gulp-useref');
 var gulp_ssh = require('gulp-ssh');
-
-var config = JSON.parse(fs.readFileSync('./ssh_config.json','utf8'));
-
-var ssh = new gulp_ssh({
-  sshConfig: config
-});
+var config;
 
 gulp.task('js', ['html'], function ()
 {
@@ -26,10 +21,23 @@ gulp.task('js', ['html'], function ()
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('scp', function()
+try
 {
-  return gulp.src('app/**/*').pipe(ssh.dest('/home/rain/test'));
-});
+  config = JSON.parse(fs.readFileSync('./ssh_config.json','utf8'));
+
+  var ssh = new gulp_ssh({
+    sshConfig: config
+  });
+
+  gulp.task('scp', function()
+  {
+    return gulp.src('app/**/*').pipe(ssh.dest('/home/rain/test'));
+  });
+}
+catch (e)
+{
+  console.log('ssh private key not found or not valid.');
+}
 
 gulp.task('html', function()
 {
