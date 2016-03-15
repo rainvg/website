@@ -104,6 +104,21 @@ angular.module('rain.ui.services', []).service('ui_services', function()
   this.navbar_setup = function(element)
   {
     var nav = element.find('nav');
+    var scroll_y = window.pageYOffset;
+    var first_section_height = $('.main-container section:nth-of-type(1)').outerHeight(true);
+    var nav_properties = {nav_fixed: false, nav_scrolled: false, nav_out_of_sight: false};
+
+    setTimeout(function()
+    {
+      var scroll_y = window.pageYOffset;
+      if (scroll_y > first_section_height)
+      {
+        nav.addClass('scrolled');
+        nav.addClass('fixed');
+        nav.addClass('outOfSight');
+        nav_properties.nav_scrolled = true;
+      }
+    }, 200);
 
     if (!nav.hasClass('fixed') && !nav.hasClass('absolute'))
     {
@@ -172,6 +187,8 @@ angular.module('rain.ui.services', []).service('ui_services', function()
       $(element).find('.nav-bar').toggleClass('nav-open');
       $(this).toggleClass('active');
     });
+
+    return nav_properties;
   };
 
   this.navbar_dropdown_setup = function(element)

@@ -40,8 +40,6 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       scope.rendered = false;
       scope.should_render = false;
 
-      var nav_properties = {nav_fixed: false, nav_scrolled: false, nav_out_of_sight: false};
-
       transclude(scope, function(clone)
       {
         element.find('ul.menu').append(clone);
@@ -59,14 +57,15 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
 
           console.debug('Rendering navbar');
 
+          var nav_properties = ui_services.navbar_setup(element);
+
+          ui_services.navbar_dropdown_setup(element);
+          ui_services.inner_link_setup(element);
+
           window.addEventListener('scroll', function()
           {
             ui_services.navbar_fixer(element, nav_properties);
           });
-
-          ui_services.navbar_setup(element);
-          ui_services.navbar_dropdown_setup(element);
-          ui_services.inner_link_setup(element);
 
           scope.rendered = true;
         }
