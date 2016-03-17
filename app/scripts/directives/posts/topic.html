@@ -3,15 +3,15 @@
     <img alt="Pic" class="mb24" ng-src="{{icon}}" />
   </a>
   <a href="{{link}}">
-    <h4 class="mb8">{{title}}</h4>
+    <h4 class="mb8" ng-bind="title"/>
   </a>
   <ul class="list-inline mb16">
-    <li>{{date}}</li>
+    <li ng-bind="date"/>
     <li>
-      <a href="{{authorlink}}">{{author}}</a>
+      <a href="{{authorlink}}" ng-bind="author"/>
     </li>
     <li>
-      <a href="{{categorylink}}"><span class="label">{{category}}</span></a>
+      <a href="{{categorylink}}"><span class="label" ng-bind="category"/></a>
     </li>
   </ul>
   <p class="mb0" ng-transclude></p>
