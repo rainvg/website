@@ -24,7 +24,7 @@ gulp.task('js', ['html'], function ()
 
 try
 {
-  config = JSON.parse(fs.readFileSync('./ssh_config.json','utf8'));
+  config = JSON.parse(fs.readFileSync('.sshrc','utf8'));
 
   var ssh = new gulp_ssh({
     sshConfig: config

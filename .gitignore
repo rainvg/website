@@ -79,4 +79,4 @@ dist
 *.csr
 
 # private jsons
-ssh_config.json
+.sshrc
