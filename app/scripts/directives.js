@@ -529,6 +529,10 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
     {
       scope.background = attributes.background + '.png';
       scope.title = attributes.title;
+      scope.call_href = attributes.callToActionHref;
+      scope.call_text = attributes.callToActionText;
+
+      ui_services.inner_link_setup(element);
 
       ui_services.update_background(element, scope.background);
     }

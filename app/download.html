@@ -15,17 +15,19 @@
   </head>
   <body class="scroll-assist">
     <navbar>
-      <navbar-item target='#top'>Home</navbar-item>
-      <navbar-item target='#about-us'>About us</navbar-item>
-      <navbar-item target='#rain-cdn'>Rain CDN</navbar-item>
-      <navbar-item target='#parallax-portfolio'>Parallax Portfolio</navbar-item>
-      <navbar-item external-href = "http://www.google.it">Google</navbar-item>
+      <navbar-item external-href='https://rain.vg'>Home</navbar-item>
+      <navbar-item target="#top">Download</navbar-item>
+      <navbar-item target="#instructions">Instructions</navbar-item>
     </navbar>
 
     <div class="main-container" ng-controller="download-section-controller">
-      <image-fullscreen background="assets/images/background/light-forest-blurred" title="Download Rain Desktop"></image-fullscreen>
-      <instructions></instructions>
+      <image-fullscreen background="assets/images/background/light-forest-blurred" title="Download Rain Desktop" call-to-action-href="#instructions" call-to-action-text="Instructions below"></image-fullscreen>
+      <div id="instructions">
+        <instructions></instructions>
+      </div>
     </div>
+
+    <last>Back to top</last>
 
     <!-- build:js main.min.js -->
   <script src="scripts/ui/jquery.min.js"></script>

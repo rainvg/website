@@ -11,10 +11,10 @@
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3 text-center">
           <h6 class="uppercase mb16">❤ for con-tree-buting!</h6>
-          <p class="lead mb40" ng-bind = "os + ' system detected.'"></p>
+          <p class="lead mb40" ng-bind = "'(' + os + ' system detected)'"></p>
           <div class="features-button center">
             <a class="btn btn-lg" ng-bind = "'Download Rain for ' + os" href = "#"></a>
-            <p class="lead mb40"><a href="#istructions">Read instructions below</a></p>
+            <p class="lead mb40"><a ng-href="{{call_href}}" class="inner-link" ng-bind="call_text"></a></p>
           </div>
         </div>
       </div>

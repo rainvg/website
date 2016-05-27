@@ -322,6 +322,7 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     var links = $(element).find('.inner-link');
     var delay = 200;
     var timeout = null;
+    var offset = 1;
 
     links.each(function()
     {
@@ -342,10 +343,10 @@ angular.module('rain.ui.services', []).service('ui_services', function()
 
     if(links.length)
     {
-      if(links.attr('href') === '#top') offset = 0;
-      links.smoothScroll(
-        {
-        offset: 0,
+      if(links.attr('href') === '#top')
+        offset = 0;
+      links.smoothScroll({
+        offset: offset,
         speed: 800
       });
     }

@@ -45,16 +45,6 @@ angular.module('rain.controllers', []).controller('navbar-controller', ['$scope'
         'title': 'Combining over 100 years of hard work and shared family knowledge',
         'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
         'screenshot': 'assets/images/screenshot.png'
-      },
-      {
-        'title': 'Combining over 100 years of hard work and shared family knowledge',
-        'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-        'screenshot': 'assets/images/screenshot.png'
-      },
-      {
-        'title': 'Combining over 100 years of hard work and shared family knowledge',
-        'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-        'screenshot': 'assets/images/screenshot.png'
       }
     ]
   };
