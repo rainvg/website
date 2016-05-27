@@ -1,0 +1,14 @@
+<section class="image-square" ng-repeat="step in steps[detected_os]" instructions-step="{{step.screenshot}}" ng-class="(($index % 2) === 0) ? 'right' : 'left'">
+  <div class="col-md-6 image">
+    <div class="background-image-holder">
+        <img alt="image" class="background-image" ng-src="{{step.screenshot}}" />
+    </div>
+  </div>
+  <div class="col-md-6 content">
+    <div class="text-center">
+      <h5 class="uppercase fade-half mb-xs-24" ng-bind="'&#8226; Step ' +  {{$index+1}} + ' &#8226;'"></h5>
+      <h4 ng-bind="step.title"></h4>
+      <p class="lead" ng-bind="step.text"></p>
+    </div>
+  </div>
+</section>

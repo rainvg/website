@@ -340,7 +340,6 @@ angular.module('rain.ui.services', []).service('ui_services', function()
       });
     });
 
-    console.log(links);
     if(links.length)
     {
       if(links.attr('href') === '#top') offset = 0;

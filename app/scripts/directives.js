@@ -529,9 +529,24 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
     {
       scope.background = attributes.background + '.png';
       scope.title = attributes.title;
-      console.log('ci sono');
 
       ui_services.update_background(element, scope.background);
+    }
+  };
+}]).directive('instructions',function()
+{
+  return {
+    restrict: 'AE',
+    replace: true,
+    templateUrl: 'scripts/directives/instructions/step.html',
+    scope: true
+  };
+}).directive('instructionsStep', ['ui_services', function(ui_services)
+{
+  return {
+    link: function(scope, element, attributes)
+    {
+      ui_services.update_background(element, attributes.instructionsStep);
     }
   };
 }]);

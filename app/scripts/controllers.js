@@ -5,6 +5,68 @@ angular.module('rain.controllers', []).controller('navbar-controller', ['$scope'
   return $scope;
 }]).controller('download-section-controller', ['$scope', 'deviceDetector', function($scope, device_detector)
 {
+  $scope.steps = {
+    'mac': [
+      {
+        'title': 'Combining over 100 years of hard work and shared family knowledge',
+        'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+        'screenshot': 'assets/images/screenshot.png'
+      },
+      {
+        'title': 'Combining over 100 years of hard work and shared family knowledge',
+        'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+        'screenshot': 'assets/images/screenshot.png'
+      },
+      {
+        'title': 'Combining over 100 years of hard work and shared family knowledge',
+        'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+        'screenshot': 'assets/images/screenshot.png'
+      }
+    ],
+    'windows': [
+      {
+        'title': 'Combining over 100 years of hard work and shared family knowledge',
+        'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+        'screenshot': 'assets/images/screenshot.png'
+      },
+      {
+        'title': 'Combining over 100 years of hard work and shared family knowledge',
+        'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+        'screenshot': 'assets/images/screenshot.png'
+      },
+      {
+        'title': 'Combining over 100 years of hard work and shared family knowledge',
+        'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+        'screenshot': 'assets/images/screenshot.png'
+      }
+    ],
+    'linux': [
+      {
+        'title': 'Combining over 100 years of hard work and shared family knowledge',
+        'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+        'screenshot': 'assets/images/screenshot.png'
+      },
+      {
+        'title': 'Combining over 100 years of hard work and shared family knowledge',
+        'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+        'screenshot': 'assets/images/screenshot.png'
+      },
+      {
+        'title': 'Combining over 100 years of hard work and shared family knowledge',
+        'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
+        'screenshot': 'assets/images/screenshot.png'
+      }
+    ]
+  };
+
+  $scope.endpoints = {
+    'mac': 'https://rain.vg/downloads',
+    'windows': 'https://rain.vg/downloads',
+    'linux': 'https://rain.vg/downloads'
+  };
+
+  $scope.detected_os = device_detector.os;
+
   switch(device_detector.os)
   {
     case 'mac':
