@@ -15,6 +15,19 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     }, 200);
   };
 
+  this.update_image_background = function(element, background_image)
+  {
+    var background = $(element).find('.background-image-holder');
+    background.css('background', 'url("' + background_image + '")');
+    background.children('img').hide();
+    background.css('background-position', 'initial');
+
+    setTimeout(function()
+    {
+      background.addClass('fadeIn');
+    }, 200);
+  };
+
   this.navbar_fixer = function(element, nav_properties)
   {
     var navbar = $(element).find('nav');

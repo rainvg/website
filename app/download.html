@@ -22,34 +22,10 @@
       <navbar-item external-href = "http://www.google.it">Google</navbar-item>
     </navbar>
 
-    <div class="main-container">
-      <section class="image-bg overlay fullscreen cover parallax">
-          <div class="background-image-holder">
-            <img alt="image" class="background-image" src="assets/images/background/light-forest-blurred.png"/>
-          </div>
-          <div class="container v-align-transform">
-          	<div class="row">
-          		<div class="col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-3">
-          			<h1 class="center mb16">Download Rain Desktop</h1>
-          		</div>
-          	</div><!--end of row-->
-              <div class="row">
-                <div class="col-sm-6 col-sm-offset-3 text-center">
-                  <h6 class="uppercase mb16">DOWNLOAD RAIN DESKTOP</h6>
-                  <p class="lead mb40">
-                    Mac OSX system detected.
-                    <br />Download Rain for OSX
-                  </p>
-                  <div class="features-button center">
-                   <a class="btn btn-lg">Download Rain for </a>
-                   <p class="lead mb40"><a href="#istructions">Instructions below</a></p>
-                  </div>
-                </div>
-              </div>
-              <!--end of row-->
-          </div>
-          <!--end of container-->
-      </section>
+    <div class="main-container" ng-controller="download-section-controller">
+      <image-fullscreen background="assets/images/background/light-forest-blurred" title="Download Rain Desktop"></image-fullscreen>
+
+      <!--
       <section class="image-square right" id="istructions">
         <div class="col-md-6 image">
           <div class="background-image-holder">
@@ -85,7 +61,7 @@
         	</div>
         </div>
       </section>
-      
+
       <section class="image-square right" id="istructions">
         <div class="col-md-6 image">
           <div class="background-image-holder">
@@ -106,11 +82,14 @@
     </div>
     <floating-back-to-top>Back to top</floating-back-to-top>
     <last>Back to top</last>
+  -->
 
     <!-- build:js main.min.js -->
   <script src="scripts/ui/jquery.min.js"></script>
   <script src="scripts/ui/bootstrap.min.js"></script>
   <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/ng-device-detector/ng-device-detector.min.js"></script>
+  <script src="bower_components/re-tree/re-tree.min.js"></script>
 
   <script src="scripts/ui/flickr.js"></script>
   <script src="scripts/ui/flexslider.min.js"></script>

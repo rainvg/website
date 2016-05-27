@@ -519,4 +519,19 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       scope.name = attributes.name;
     }
   };
-});
+}).directive('imageFullscreen', ['ui_services', function(ui_services)
+{
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'scripts/directives/image-fullscreen/section.html',
+    link: function(scope, element, attributes)
+    {
+      scope.background = attributes.background + '.png';
+      scope.title = attributes.title;
+      console.log('ci sono');
+
+      ui_services.update_background(element, scope.background);
+    }
+  };
+}]);
