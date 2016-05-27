@@ -34,7 +34,7 @@ $(document).ready(function()
   }, false);
 */
   // Append .background-image-holder <img>'s as CSS backgrounds
-/*
+
   $('.background-image-holder').each(function() {
       var imgSrc = $(this).children('img').attr('src');
       $(this).css('background', 'url("' + imgSrc + '")');
@@ -51,7 +51,7 @@ $(document).ready(function()
       $(this).addClass('fadeIn');
     });
   }, 200);
-*/
+
   // Initialize Tooltips
 
   $('[data-toggle="tooltip"]').tooltip();
@@ -523,7 +523,7 @@ $(document).ready(function()
     	}
     	var modal = jQuery(this);
 
-        if(typeof modal.attr('data-cookie') != "undefined"){
+        if(typeof modal.attr('data-cookie') !== 'undefined'){
 
             if(!mr_cookies.hasItem(modal.attr('data-cookie'))){
             	setTimeout(function(){
@@ -539,9 +539,9 @@ $(document).ready(function()
 
     jQuery('.modal-strip .close-modal').click(function(){
         var modal = jQuery(this).closest('.modal-strip');
-        if(typeof modal.attr('data-cookie') != "undefined"){
-            mr_cookies.setItem(modal.attr('data-cookie'), "true", Infinity);
-        }
+        if(typeof modal.attr('data-cookie') !== 'undefined')
+          mr_cookies.setItem(modal.attr('data-cookie'), 'true', Infinity);
+
     	jQuery(this).closest('.modal-strip').removeClass('reveal-modal');
     	return false;
     });
@@ -557,7 +557,7 @@ $(document).ready(function()
 
     // Checkboxes
 
-    $('.checkbox-option').on("click",function() {
+    $('.checkbox-option').on('click',function() {
         $(this).toggleClass('checked');
         var checkbox = $(this).find('input');
         if (checkbox.prop('checked') === false) {
@@ -597,7 +597,7 @@ $(document).ready(function()
         } else {
             $(this).toggleClass('active');
         }
-        if(typeof window.mr_parallax !== "undefined"){
+        if(typeof window.mr_parallax !== 'undefined'){
             setTimeout(mr_parallax.windowLoad, 500);
         }
     });

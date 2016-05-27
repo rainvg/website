@@ -1,10 +1,10 @@
 <div class="nav-container">
   <a id="top"></a>
-  <nav class="absolute transparent">
+  <nav class="absolute" ng-class="dark_navbar ? 'bg-dark' : 'transparent'">
     <div class="nav-bar">
       <div class="module left">
         <a href="index.html">
-          <img class="logo logo-dark" alt="Rain" src="assets/images/logo/logo_reverse.png" />
+          <img class="logo" ng-class="dark_navbar ? 'logo-light' : 'logo-dark'" alt="Rain" src="assets/images/logo/logo.png" />
         </a>
       </div>
       <div class="module widget-handle mobile-toggle right visible-sm visible-xs">

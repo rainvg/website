@@ -40,6 +40,9 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       scope.rendered = false;
       scope.should_render = false;
 
+      if(attributes.dark)
+        scope.dark_navbar = true;
+
       transclude(scope, function(clone)
       {
         element.find('ul.menu').append(clone);
