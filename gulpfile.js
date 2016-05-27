@@ -101,6 +101,11 @@ gulp.task('serve', function()
   gulp.watch('app/scripts/**/*.js').on('change', browserSync.reload);
 });
 
+gulp.task('test', function()
+{
+  
+});
+
 gulp.task('css', function()
 {
   return gulp.src([
