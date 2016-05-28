@@ -553,4 +553,42 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       ui_services.update_background(element, attributes.instructionsStep);
     }
   };
-}]);
+}]).directive('selectOnClick', function ()
+{
+    return {
+        restrict: 'A',
+        controller: 'download-section-controller',
+        controllerAs: 'ctrl',
+        link: function (scope, element, attributes, ctrl)
+        {
+          element.on('click', function ()
+          {
+            $(this).select();
+
+            if (document.selection)
+            {
+              var range = document.body.createTextRange();
+              range.moveToElementText(this);
+              range.select();
+            } else if (window.getSelection)
+            {
+              var range = document.createRange();
+              range.selectNode(this);
+              window.getSelection().addRange(range);
+            }
+            document.execCommand('copy');
+
+            if(this.innerHTML.indexOf('x86') !== -1)
+            {
+              console.log('clicked on x86 link');
+              ctrl.copy_x86();
+            }
+            else
+            {
+              console.log('clicked on x64 link');
+              ctrl.copy_x64();
+            }
+          });
+        }
+    };
+});

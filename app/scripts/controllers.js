@@ -5,6 +5,8 @@ angular.module('rain.controllers', []).controller('navbar-controller', ['$scope'
   return $scope;
 }]).controller('download-section-controller', ['$scope', 'deviceDetector', function($scope, device_detector)
 {
+  $scope.code86_copied = false;
+  $scope.code64_copied = false;
   $scope.steps = {
     'mac': [
       {
@@ -53,9 +55,12 @@ angular.module('rain.controllers', []).controller('navbar-controller', ['$scope'
     'mac': 'https://rain.vg/downloads/osx/installer.dmg',
     'windows': {
       'x86':'https://rain.vg/downloads/windows/windows-x86/setup_x86.exe',
-      'x64': 'https://rain.vg/downloads/windows-x64/setup_x64.exe'
+      'x64': 'https://rain.vg/downloads/windows/windows-x64/setup_x64.exe'
     },
-    'linux': 'https://rain.vg/downloads/linux/'
+    'linux': {
+      'x86': 'https://rain.vg/downloads/linux/',
+      'x64': 'https://rain.vg/downloads/linux/linux-x86/rain.tar.gz'
+    }
   };
 
   $scope.detected_os = device_detector.os;
@@ -75,4 +80,29 @@ angular.module('rain.controllers', []).controller('navbar-controller', ['$scope'
       $scope.os = 'Unknown';
     break;
   }
+
+  this.copy_x86 = function()
+  {
+    $scope.code86_copied = true;
+    $scope.$apply();
+    setTimeout(this.code86_unselect, 1000);
+  };
+
+  this.copy_x64 = function()
+  {
+    $scope.code64_copied = true;
+    $scope.$apply();
+    setTimeout(this.code64_unselect, 1000);
+  };
+
+  this.code86_unselect = function()
+  {
+    $scope.code86_copied = false;
+    $scope.$apply();
+  };
+  this.code64_unselect = function()
+  {
+    $scope.code64_copied = false;
+    $scope.$apply();
+  };
 }]);

@@ -534,6 +534,71 @@ blockquote .author {
   column-count: 2;
   -webkit-column-count: 2;
 }
+
+@media all and (max-width: 1920px)
+{
+  code {
+    padding: 10px 20px;
+    font-size: 100%;
+    color: #F5EFF0;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 4px;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
+
+  span.code_copy
+  {
+    width: 200px;
+    float: right;
+    margin-left: -70px;
+    font-size: 10pt;
+  }
+}
+@media all and (max-width: 1200px)
+{
+  span.code_copy
+  {
+    width: 200px;
+    float: right;
+    margin-left: -70px;
+    font-size: 8pt;
+  }
+}
+
+@media all and (max-width: 980px)
+{
+  code {
+    padding: 10px 10px;
+    font-size: 75%;
+    color: #F5EFF0;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 4px;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
+
+  span.code_copy
+  {
+    display: none;
+    width: 200px;
+    float: right;
+    margin-left: -35px;
+    font-size: 65%;
+  }
+}
+
+@media all and (max-width: 580px)
+{
+  code {
+    padding: 5px 5px;
+    font-size: 75%;
+    color: #F5EFF0;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 4px;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    display: block;
+  }
+}
+
 @media all and (max-width: 767px) {
   br {
     display: none;
