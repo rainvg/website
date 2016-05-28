@@ -50,9 +50,12 @@ angular.module('rain.controllers', []).controller('navbar-controller', ['$scope'
   };
 
   $scope.endpoints = {
-    'mac': 'https://rain.vg/downloads',
-    'windows': 'https://rain.vg/downloads',
-    'linux': 'https://rain.vg/downloads'
+    'mac': 'https://rain.vg/downloads/osx/installer.dmg',
+    'windows': {
+      'x86':'https://rain.vg/downloads/windows/windows-x86/setup_x86.exe',
+      'x64': 'https://rain.vg/downloads/windows-x64/setup_x64.exe'
+    },
+    'linux': 'https://rain.vg/downloads/linux/'
   };
 
   $scope.detected_os = device_detector.os;
