@@ -17,15 +17,12 @@
 
     <navbar>
       <navbar-item target='#top'>Home</navbar-item>
-      <navbar-item target='#about-us'>About us</navbar-item>
-      <navbar-item target='#rain-cdn'>Rain CDN</navbar-item>
-      <navbar-item target='#parallax-portfolio'>Parallax Portfolio</navbar-item>
-      <navbar-item external-href = "http://www.google.it">Google</navbar-item>
+      <navbar-item external-href = "https://rain.vg/download.html">Download</navbar-item>
     </navbar>
 
     <div class="main-container">
       <video-section title = "We are making things happen" subtitle = "Join the development" logo = "assets/images/logo/logo_white" background = "assets/images/background/background" video="assets/videos/typing"></video-section>
-
+      <!--
       <about-us>
         <about-us-topic active = "true" title = "Lorem ipsum" icon = "ti-layers">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</about-us-topic>
         <about-us-topic title = "Lorem ipsum" icon = "ti-package">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</about-us-topic>
@@ -80,18 +77,23 @@
       <blog>
     </div>
 
-    <!--
+
       <policy href = "#top" buttontext = "Lorem ipsum"><strong>Lorem ipsum</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</policy>
-    -->
+
 
     <floating-back-to-top>Back to top</floating-back-to-top>
     <last>Back to top</last>
-
-    <!-- build:js main.min.js -->
+    -->
+    
+    <!-- build:js index.min.js -->
     <script src="scripts/ui/jquery.min.js"></script>
     <script src="scripts/ui/bootstrap.min.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
 
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/ng-device-detector/ng-device-detector.min.js"></script>
+    <script src="bower_components/re-tree/re-tree.min.js"></script>
+
+    <script src="scripts/tools/platform.js"></script>
     <script src="scripts/ui/flickr.js"></script>
     <script src="scripts/ui/flexslider.min.js"></script>
     <script src="scripts/ui/lightbox.min.js"></script>
@@ -103,12 +105,12 @@
     <script src="scripts/ui/parallax.js"></script>
     <script src="scripts/ui/smooth-scroll.min.js"></script>
     <script src="scripts/ui/scripts.js"></script>
+
     <script src="scripts/ui/services.js"></script>
 
     <script src="scripts/controllers.js"></script>
     <script src="scripts/directives.js"></script>
     <script src="scripts/app.js"></script>
     <!-- endbuild -->
-
   </body>
 </html>

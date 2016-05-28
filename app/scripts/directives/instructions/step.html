@@ -1,0 +1,28 @@
+<section class="image-square" ng-repeat="step in steps[detected_os]" instructions-step="{{step.screenshot}}" ng-class="(($index % 2) === 0) ? 'right' : 'left'">
+
+  <div class="col-md-6 image" ng-show="!step.video">
+    <div class="background-image-holder screenshot">
+        <img alt="image" class="background-image" ng-src="{{step.screenshot}}" />
+    </div>
+  </div>
+
+  <div class="col-md-6 image" ng-show="step.video" start-on-scroll="{{step.video}}">
+    <div class="player">
+      <video class="instructions">
+        <source ng-src="{{step.video_mp4}}" type="video/mp4" />
+        <source ng-src="{{step.video_webm}}" type="video/webm" />
+      </video>
+    </div>
+    <div class="background-image-holder placeholder">
+      <img alt="image" class="background-image" ng-src="{{step.screenshot}}" />
+    </div>
+  </div>
+
+  <div class="col-md-6 content" ng-class="step.video ? 'video-instructions':''">
+    <div class="text-center">
+      <h5 class="uppercase fade-half mb-xs-24" ng-bind="'&#8226; Step ' +  {{$index+1}} + ' &#8226;'"></h5>
+      <h4 ng-bind="step.title"></h4>
+      <p class="lead" ng-bind="step.text"></p>
+    </div>
+  </div>
+</section>

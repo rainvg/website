@@ -1,0 +1,30 @@
+<section class="image-bg overlay fullscreen cover parallax">
+  <div class="background-image-holder">
+    <img alt="image" class="background-image" ng-src="{{background}}" />
+  </div>
+  <div class="container v-align-transform">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+        <h1 class="center mb16" ng-bind = "title"></h1>
+      </div>
+    </div><!--end of row-->
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <h6 class="uppercase mb16">❤ for con-tree-buting!</h6>
+          <div class="features-button center">
+
+            <div ng-show="detected_os !== 'linux'">
+              <a class="btn btn-lg" ng-bind = "'Download for ' + os + (detected_os === 'windows' ? ' ' + detected_arch + ' bit': '')" ng-href = "{{(detected_os === 'windows' ? ((detected_arch === 32) ? endpoints[detected_os]['x86'] : endpoints[detected_os]['x64']) : endpoints[detected_os])}}"></a>
+            </div>
+
+            <div ng-show="detected_os === 'linux'">
+              <p class="lead mb40">
+                <code select-on-click>/bin/bash <(curl -s https://rain.vg/downloads/linux/linux-{{(detected_arch === 32) ? 'x86' : 'x64'}}/installer.sh)</code> <span class="code_copy" ng-cli ng-bind="code_copied ? 'Code copied to clipboard' : 'Click the code to copy'"></span>
+              </p>
+            </div>
+            <p class="lead mb40"><a ng-href="{{call_href}}" class="inner-link" ng-bind="call_text"></a></p>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>

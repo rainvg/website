@@ -519,4 +519,86 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
       scope.name = attributes.name;
     }
   };
-});
+}).directive('imageFullscreen', ['ui_services', function(ui_services)
+{
+  return {
+    restrict: 'E',
+    replace: true,
+    templateUrl: 'scripts/directives/image-fullscreen/section.html',
+    link: function(scope, element, attributes)
+    {
+      scope.background = attributes.background + '.png';
+      scope.title = attributes.title;
+      scope.call_href = attributes.callToActionHref;
+      scope.call_text = attributes.callToActionText;
+
+      ui_services.inner_link_setup(element);
+
+      ui_services.update_background(element, scope.background);
+    }
+  };
+}]).directive('instructions',function()
+{
+  return {
+    restrict: 'AE',
+    replace: true,
+    templateUrl: 'scripts/directives/instructions/step.html',
+    scope: true
+  };
+}).directive('instructionsStep', ['ui_services', function(ui_services)
+{
+  return {
+    link: function(scope, element, attributes)
+    {
+      ui_services.update_background(element, attributes.instructionsStep);
+    }
+  };
+}]).directive('selectOnClick', function ()
+{
+    return {
+        restrict: 'A',
+        controller: 'download-section-controller',
+        controllerAs: 'ctrl',
+        link: function (scope, element, attributes, ctrl)
+        {
+          element.on('click', function ()
+          {
+            $(this).select();
+
+            if (document.selection)
+            {
+              var range = document.body.createTextRange();
+              range.moveToElementText(this);
+              range.select();
+            } else if (window.getSelection)
+            {
+              var range = document.createRange();
+              range.selectNode(this);
+              window.getSelection().addRange(range);
+            }
+            document.execCommand('copy');
+
+            ctrl.copy();
+          });
+        }
+    };
+}).directive('startOnScroll', ['ui_services', function(ui_services)
+{
+  return {
+    restrict: 'A',
+    link: function (scope, element, attributes)
+    {
+      if(attributes.startOnScroll)
+      {
+        scope.played = false;
+        window.addEventListener('scroll', function()
+        {
+          if(!scope.played)
+            ui_services.start_on_scroll(scope, element);
+          else
+            ui_services.reset_video_on_scroll(scope, element);
+        });
+      }
+    }
+  };
+}]);
