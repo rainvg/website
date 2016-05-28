@@ -67,7 +67,7 @@ try
 
   gulp.task('server_setup', ['server_package_manager'], function()
   {
-     return ssh.shell(['cd', 'cd tmp', 'cp -rf * ~/website'], {filePath: 'setup.log'}).pipe(gulp.dest('logs'));
+     return ssh.shell(['cd', 'cd tmp', 'cp -rf * ~/website', 'cd', 'rm -rf tmp'], {filePath: 'setup.log'}).pipe(gulp.dest('logs'));
   });
 
   gulp.task('clean_dist', ['server_setup'],function()
