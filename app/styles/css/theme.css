@@ -816,6 +816,12 @@ footer.bg-dark li,
   -moz-transition: all 0.3s ease;
   opacity: 0;
 }
+
+.screenshot {
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+}
+
 .background-image-holder img {
   display: none;
 }
