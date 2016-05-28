@@ -37,19 +37,24 @@ angular.module('rain.controllers', []).controller('navbar-controller', ['$scope'
     ],
     'windows': [
       {
-        'title': 'Combining over 100 years of hard work and shared family knowledge',
-        'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-        'screenshot': 'assets/images/screenshot.png'
+        'title': 'Launch the installer',
+        'text': 'Double-click on the installer to launch the installation process. An User Account Control window will appear, click on Yes to confirm that you intend to proceed.',
+        'screenshot': 'assets/images/screenshots/windows/user_access.png'
       },
       {
-        'title': 'Combining over 100 years of hard work and shared family knowledge',
-        'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-        'screenshot': 'assets/images/screenshot.png'
+        'title': 'Follow the installation wizard',
+        'text': 'The installation wizard will guide you through the installation process. The default settings are likely to suit the needs of most of the users, but feel free to make some personalisation.',
+        'screenshot': 'assets/images/screenshots/windows/accept.png'
       },
       {
-        'title': 'Combining over 100 years of hard work and shared family knowledge',
-        'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
-        'screenshot': 'assets/images/screenshot.png'
+        'title': 'Installation in progress',
+        'text': 'After the configuration is complete, the installation wizard will automatically install RAIN on your computer.',
+        'screenshot': 'assets/images/screenshots/windows/installing.png'
+      },
+      {
+        'title': 'Setup completed',
+        'text': 'When the setup is completed, make sure that the "Launch Rain" checkbox is checked: RAIN will automatically start in a few seconds.',
+        'screenshot': 'assets/images/screenshots/windows/finished.png'
       }
     ],
     'linux': [
