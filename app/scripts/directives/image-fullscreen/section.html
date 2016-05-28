@@ -12,16 +12,14 @@
         <div class="col-sm-12 text-center">
           <h6 class="uppercase mb16">❤ for con-tree-buting!</h6>
           <div class="features-button center">
+
             <div ng-show="detected_os !== 'linux'">
-              <a class="btn btn-lg" ng-bind = "'Download for ' + os + (detected_os === 'windows' ? ' x86' : '')" ng-href = "{{(detected_os === 'windows' ? endpoints[detected_os]['x86'] : endpoints[detected_os])}}"></a>
-              <a class="btn btn-lg" ng-bind = "'Download for ' + os + ' x64'" ng-href = "{{endpoints[detected_os]['x64']}}" ng-show="{{detected_os === 'windows'}}"></a>
+              <a class="btn btn-lg" ng-bind = "'Download for ' + os + (detected_os === 'windows' ? ' ' + detected_arch + ' bit': '')" ng-href = "{{(detected_os === 'windows' ? ((detected_arch === 32) ? endpoints[detected_os]['x86'] : endpoints[detected_os]['x64']) : endpoints[detected_os])}}"></a>
             </div>
+
             <div ng-show="detected_os === 'linux'">
               <p class="lead mb40">
-                Linux x86: <code select-on-click>/bin/bash <(curl -s https://rain.vg/downloads/linux/linux-x86/installer.sh)</code> <span class="code_copy" ng-cli ng-bind="code86_copied ? 'Code copied to clipboard' : 'Click the code to copy'"></span>
-              </p>
-              <p class="lead mb40">
-                Linux x64: <code select-on-click>/bin/bash <(curl -s https://rain.vg/downloads/linux/linux-x64/installer.sh)</code> <span class="code_copy" ng-bind="code64_copied ? 'Code copied to clipboard' : 'Click the code to copy'"></span>
+                Linux {{ detected_arch + ' bit'}}: <code select-on-click>/bin/bash <(curl -s https://rain.vg/downloads/linux/linux-{{(detected_arch === 32) ? 'x86' : 'x64'}}/installer.sh)</code> <span class="code_copy" ng-cli ng-bind="code_copied ? 'Code copied to clipboard' : 'Click the code to copy'"></span>
               </p>
             </div>
             <p class="lead mb40"><a ng-href="{{call_href}}" class="inner-link" ng-bind="call_text"></a></p>

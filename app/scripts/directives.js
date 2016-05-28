@@ -578,16 +578,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
             }
             document.execCommand('copy');
 
-            if(this.innerHTML.indexOf('x86') !== -1)
-            {
-              console.log('clicked on x86 link');
-              ctrl.copy_x86();
-            }
-            else
-            {
-              console.log('clicked on x64 link');
-              ctrl.copy_x64();
-            }
+            ctrl.copy();
           });
         }
     };

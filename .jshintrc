@@ -94,6 +94,7 @@
       "twitterFetcher": false,
       "google": false,
       "Masonry": false,
-      "mr_cookies": false
+      "mr_cookies": false,
+      "platform": false
     }
 }

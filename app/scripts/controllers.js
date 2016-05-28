@@ -5,8 +5,8 @@ angular.module('rain.controllers', []).controller('navbar-controller', ['$scope'
   return $scope;
 }]).controller('download-section-controller', ['$scope', 'deviceDetector', function($scope, device_detector)
 {
-  $scope.code86_copied = false;
-  $scope.code64_copied = false;
+  $scope.code_copied = false;
+
   $scope.steps = {
     'mac': [
       {
@@ -92,6 +92,7 @@ angular.module('rain.controllers', []).controller('navbar-controller', ['$scope'
   };
 
   $scope.detected_os = device_detector.os;
+  $scope.detected_arch = platform.os.architecture;
 
   switch(device_detector.os)
   {
@@ -109,28 +110,16 @@ angular.module('rain.controllers', []).controller('navbar-controller', ['$scope'
     break;
   }
 
-  this.copy_x86 = function()
+  this.copy = function()
   {
-    $scope.code86_copied = true;
+    $scope.code_copied = true;
     $scope.$apply();
-    setTimeout(this.code86_unselect, 1000);
+    setTimeout(this.code_unselect, 1000);
   };
 
-  this.copy_x64 = function()
+  this.code_unselect = function()
   {
-    $scope.code64_copied = true;
-    $scope.$apply();
-    setTimeout(this.code64_unselect, 1000);
-  };
-
-  this.code86_unselect = function()
-  {
-    $scope.code86_copied = false;
-    $scope.$apply();
-  };
-  this.code64_unselect = function()
-  {
-    $scope.code64_copied = false;
+    $scope.code_copied = false;
     $scope.$apply();
   };
 }]);
