@@ -3968,9 +3968,24 @@ iframe {
   left: 0;
   z-index: 1;
 }
-@media all and (max-width: 767px) {
-  .player {
+
+.placeholder
+{
+  display: none;
+  opacity: 0;
+}
+
+@media all and (max-width: 767px)
+{
+  .player
+  {
     display: none;
+  }
+
+  .placeholder
+  {
+    display: block;
+    opacity: 1;
   }
 }
 .vid-bg {
@@ -4124,6 +4139,7 @@ video.instructions
   display: inline-block;
   z-index: 0;
 }
+
 @media all and (max-width: 767px) {
   .play-button.large {
     width: 90px;

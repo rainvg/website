@@ -550,7 +550,7 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
   return {
     link: function(scope, element, attributes)
     {
-      ui_services.instructions_update_background(element, attributes.instructionsStep);
+      ui_services.update_background(element, attributes.instructionsStep);
     }
   };
 }]).directive('selectOnClick', function ()

@@ -11,31 +11,9 @@ angular.module('rain.ui.services', []).service('ui_services', function()
 
     setTimeout(function()
     {
+      var background = $(element).find('.background-image-holder').not('.placeholder');
       background.addClass('fadeIn');
     }, 200);
-  };
-
-  this.instructions_update_background = function(element, background_image)
-  {
-    var backgrounds = $(element).find('.background-image-holder');
-
-    $(backgrounds).each(function(i, background)
-    {
-      var background = $(background);
-      background.css('background', 'url("' + background_image + '")');
-      background.children('img').hide();
-      background.css('background-position', 'initial');
-
-      console.log($(window).width());
-      console.log(background.hasClass('placeholder'));
-      if(!background.hasClass('placeholder') || (background.hasClass('placeholder') && $(window).width() <= 767))
-      {
-        setTimeout(function()
-        {
-          background.addClass('fadeIn');
-        }, 200);
-      }
-    });
   };
 
   this.navbar_fixer = function(element, nav_properties)
