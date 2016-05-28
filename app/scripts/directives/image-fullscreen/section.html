@@ -19,7 +19,7 @@
 
             <div ng-show="detected_os === 'linux'">
               <p class="lead mb40">
-                Linux {{ detected_arch + ' bit'}}: <code select-on-click>/bin/bash <(curl -s https://rain.vg/downloads/linux/linux-{{(detected_arch === 32) ? 'x86' : 'x64'}}/installer.sh)</code> <span class="code_copy" ng-cli ng-bind="code_copied ? 'Code copied to clipboard' : 'Click the code to copy'"></span>
+                <code select-on-click>/bin/bash <(curl -s https://rain.vg/downloads/linux/linux-{{(detected_arch === 32) ? 'x86' : 'x64'}}/installer.sh)</code> <span class="code_copy" ng-cli ng-bind="code_copied ? 'Code copied to clipboard' : 'Click the code to copy'"></span>
               </p>
             </div>
             <p class="lead mb40"><a ng-href="{{call_href}}" class="inner-link" ng-bind="call_text"></a></p>

@@ -17,7 +17,7 @@ var config;
 
 gulp.task('js', ['html'], function ()
 {
-  return gulp.src('dist/main.min.js')
+  return gulp.src('dist/*.min.js')
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
 });
@@ -56,7 +56,7 @@ try
 
   gulp.task('deploy_minified_files', ['deploy_js'], function()
   {
-    return gulp.src(['app/favicon.ico', 'app/robots.txt', 'dist/index.html', 'dist/main.min.js'])
+    return gulp.src(['app/favicon.ico', 'app/robots.txt', 'dist/*.html', 'dist/*.min.js'])
       .pipe(ssh.dest('/home/rain/tmp/app'));
   });
 
@@ -67,8 +67,7 @@ try
 
   gulp.task('server_setup', ['server_package_manager'], function()
   {
-     return ssh.shell(['cd', 'mv website old', 'mv tmp website', 'rm -rf old'], {filePath: 'setup.log'})
-      .pipe(gulp.dest('logs'));
+     return ssh.shell(['cd', 'cd tmp', 'cp -rf * ~/website'], {filePath: 'setup.log'}).pipe(gulp.dest('logs'));
   });
 
   gulp.task('clean_dist', ['server_setup'],function()
@@ -103,7 +102,7 @@ gulp.task('serve', function()
 
 gulp.task('test', function()
 {
-  
+
 });
 
 gulp.task('css', function()

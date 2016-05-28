@@ -556,7 +556,7 @@ blockquote .author {
   {
     float: right;
     font-size: 10pt;
-    margin-right: 12%;
+    margin-right: 16%;
   }
 }
 @media all and (max-width: 1200px)
