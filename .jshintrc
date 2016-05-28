@@ -93,6 +93,7 @@
       "jQuery": false,
       "twitterFetcher": false,
       "google": false,
-      "Masonry": false
+      "Masonry": false,
+      "mr_cookies": false
     }
 }

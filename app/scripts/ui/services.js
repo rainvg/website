@@ -104,7 +104,6 @@ angular.module('rain.ui.services', []).service('ui_services', function()
   this.navbar_setup = function(element)
   {
     var nav = element.find('nav');
-    var scroll_y = window.pageYOffset;
     var first_section_height = $('.main-container section:nth-of-type(1)').outerHeight(true);
     var nav_properties = {nav_fixed: false, nav_scrolled: false, nav_out_of_sight: false};
 
@@ -416,5 +415,34 @@ angular.module('rain.ui.services', []).service('ui_services', function()
     classes = ' class = "btn btn-lg"';
     button = $('<a' + classes + href + '>' + text + '</a>');
     return button;
+  };
+
+  this.start_on_scroll = function(scope, video)
+  {
+    var scroll_y = window.pageYOffset;
+
+    if($(video).offset()['top'] <= (scroll_y + $(window).height()) - ($(video).height() / 2))
+    {
+      $(video).find('video')[0].play();
+
+      $(video).find('video')[0].addEventListener('ended', function()
+      {
+        scope.video_ended = true;
+      });
+
+      scope.played = true;
+    }
+  };
+
+  this.reset_video_on_scroll = function(scope, video)
+  {
+    var scroll_y = window.pageYOffset;
+
+    if(($(video).offset()['top'] > (scroll_y + $(window).height())) && scope.video_ended)
+    {
+      $(video).find('video')[0].load();
+      scope.played = false;
+      scope.video_ended = false;
+    }
   };
 });

@@ -3997,11 +3997,19 @@ iframe {
     display: none;
   }
 }
-video {
+video
+{
   max-width: 100%;
   transform: scale(1.5);
   -webkit-transform: scale(1.5);
 }
+
+video.instructions
+{
+  transform: none;
+  -webkit-transform: none;
+}
+
 .local-video-container {
   position: relative;
   margin-bottom: 24px;
@@ -4562,6 +4570,14 @@ video {
   -webkit-transform: translate3d(0, -50%, 0);
   -moz-transform: translate3d(0, -50%, 0);
 }
+
+.image-square > .content.video-instructions
+{
+  transform: translate3d(0, -90%, 0);
+  -webkit-transform: translate3d(0, -90%, 0);
+  -moz-transform: translate3d(0, -90%, 0);
+}
+
 .image-square.left .image {
   left: 0;
 }

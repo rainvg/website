@@ -591,4 +591,23 @@ angular.module('rain.directives', ['rain.ui.services']).directive('navbarItem', 
           });
         }
     };
-});
+}).directive('startOnScroll', ['ui_services', function(ui_services)
+{
+  return {
+    restrict: 'A',
+    link: function (scope, element, attributes)
+    {
+      if(attributes.startOnScroll)
+      {
+        scope.played = false;
+        window.addEventListener('scroll', function()
+        {
+          if(!scope.played)
+            ui_services.start_on_scroll(scope, element);
+          else
+            ui_services.reset_video_on_scroll(scope, element);
+        });
+      }
+    }
+  };
+}]);

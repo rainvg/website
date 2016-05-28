@@ -11,7 +11,6 @@
       <div class="row">
         <div class="col-sm-12 text-center">
           <h6 class="uppercase mb16">❤ for con-tree-buting!</h6>
-          <p class="lead mb40" ng-bind = "'(' + os + ' system detected)'"></p>
           <div class="features-button center">
             <div ng-show="detected_os !== 'linux'">
               <a class="btn btn-lg" ng-bind = "'Download for ' + os + (detected_os === 'windows' ? ' x86' : '')" ng-href = "{{(detected_os === 'windows' ? endpoints[detected_os]['x86'] : endpoints[detected_os])}}"></a>
