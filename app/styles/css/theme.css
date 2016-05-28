@@ -829,7 +829,8 @@ footer.bg-dark li,
   background-color: #47b475 !important;
   background-blend-mode: multiply;
 }
-.background-image-holder.fadeIn {
+.background-image-holder.fadeIn
+{
   opacity: 1;
 }
 .parallax > .background-image-holder,
@@ -3989,7 +3990,8 @@ iframe {
 .vid-bg .container.fadeOut {
   opacity: 0;
 }
-@media all and (max-width: 1024px) {
+@media all and (max-width: 1024px)
+{
   .vid-bg .background-image-holder {
     display: block;
   }
@@ -3997,6 +3999,7 @@ iframe {
     display: none;
   }
 }
+
 video
 {
   max-width: 100%;

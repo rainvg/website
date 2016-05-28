@@ -1,5 +1,4 @@
 <section class="image-square" ng-repeat="step in steps[detected_os]" instructions-step="{{step.screenshot}}" ng-class="(($index % 2) === 0) ? 'right' : 'left'">
-
   <div class="col-md-6 image" ng-show="!step.video">
     <div class="background-image-holder screenshot">
         <img alt="image" class="background-image" ng-src="{{step.screenshot}}" />
@@ -13,7 +12,7 @@
         <source ng-src="{{step.video_webm}}" type="video/webm" />
       </video>
     </div>
-    <div class="background-image-holder">
+    <div class="background-image-holder placeholder">
       <img alt="image" class="background-image" ng-src="{{step.screenshot}}" />
     </div>
   </div>

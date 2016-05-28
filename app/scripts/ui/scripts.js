@@ -42,16 +42,6 @@ $(document).ready(function()
       $(this).css('background-position', 'initial');
   });
 
-  // Fade in background images
-
-  setTimeout(function()
-  {
-    $('.background-image-holder').each(function()
-    {
-      $(this).addClass('fadeIn');
-    });
-  }, 200);
-
   // Initialize Tooltips
 
   $('[data-toggle="tooltip"]').tooltip();

@@ -36,8 +36,8 @@ angular.module('rain.controllers', []).controller('navbar-controller', ['$scope'
       },
       {
         'title': 'Enter your password',
-        'text': 'The procedure will install RAIN automatically. After the download is completed, you will be asked for your password: just type it (it is normal if nothing appears when you time) and press Enter.',
-        'screenshot': 'assets/images/screenshots/linux/install2.gif',
+        'text': 'The procedure will install RAIN automatically. After the download is completed, you will be asked for your password: just type it (it is normal if nothing appears when you type) and press Enter.',
+        'screenshot': 'assets/images/screenshots/linux/install_snapshot.png',
         'video': true,
         'video_mp4': 'assets/images/screenshots/linux/install.mp4',
         'video_webm': 'assets/images/screenshots/linux/install.webm'
@@ -58,6 +58,14 @@ angular.module('rain.controllers', []).controller('navbar-controller', ['$scope'
         'title': 'Combining over 100 years of hard work and shared family knowledge',
         'text': 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.',
         'screenshot': 'assets/images/screenshot.png'
+      },
+      {
+        'title': 'Enter your password',
+        'text': 'The procedure will install RAIN automatically. After the download is completed, you will be asked for your password: just type it (it is normal if nothing appears when you type) and press Enter.',
+        'screenshot': 'assets/images/screenshots/linux/install_snapshot.png',
+        'video': true,
+        'video_mp4': 'assets/images/screenshots/linux/install.mp4',
+        'video_webm': 'assets/images/screenshots/linux/install.webm'
       }
     ],
     'linux': [
