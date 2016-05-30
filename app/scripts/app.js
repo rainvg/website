@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('rain', ['rain.controllers', 'rain.directives', 'ng.deviceDetector']);
+angular.module('rain', ['rain.controllers', 'rain.directives', 'rain.backend', 'ng.deviceDetector', 'chart.js']);

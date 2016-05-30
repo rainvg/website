@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" ng-app = "rain">
+  <head>
+    <meta charset="utf-8">
+    <title>Rain</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Rain - One Two Tree"/>
+    <meta property="og:description" content="Join the development! Save the world!"/>
+    <meta property="og:url" content="https://rain.vg/"/>
+    <meta property="og:image" content="https://rain.vg/assets/images/logo/logo_complete.png"/>
+    <link href="styles/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="styles/css/themify-icons.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="styles/css/flexslider.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="styles/css/lightbox.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="styles/css/ytplayer.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="styles/css/theme.css" rel="stylesheet" type="text/css" media="all" />
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400%7CRaleway:100,400,300,500,600,700%7COpen+Sans:400,500,600' rel='stylesheet' type='text/css'>
+    <link href="bower_components/angular-chart.js/dist/angular-chart.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" rel="stylesheet" type="text/css" media="all" />
+  </head>
+  <body>
+    <navbar dark="true">
+      <navbar-item target='#top'>Home</navbar-item>
+      <navbar-item external-href = "https://rain.vg/download.html">Download</navbar-item>
+    </navbar>
+
+    <section class="fullscreen cover parallax">
+    <div class="container v-align-transform">
+      <div class="row">
+        <div ng-controller="chart-controller" class="col-sm-12">
+          <canvas id="line"
+            class="chart chart-line"
+            chart-data="data"
+            chart-options="options"
+            chart-labels="labels"
+            chart-series="series"
+          chart-click="onClick" >
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- build:js index.min.js -->
+  <script src="scripts/ui/jquery.min.js"></script>
+  <script src="scripts/ui/bootstrap.min.js"></script>
+
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/ng-device-detector/ng-device-detector.min.js"></script>
+  <script src="bower_components/re-tree/re-tree.min.js"></script>
+  <script src="bower_components/Chart.js/Chart.js"></script>
+  <script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
+
+  <script src="scripts/tools/platform.js"></script>
+  <script src="scripts/ui/flickr.js"></script>
+  <script src="scripts/ui/flexslider.min.js"></script>
+  <script src="scripts/ui/lightbox.min.js"></script>
+  <script src="scripts/ui/masonry.min.js"></script>
+  <script src="scripts/ui/twitterfetcher.min.js"></script>
+  <script src="scripts/ui/spectragram.min.js"></script>
+  <script src="scripts/ui/ytplayer.min.js"></script>
+  <script src="scripts/ui/countdown.min.js"></script>
+  <script src="scripts/ui/parallax.js"></script>
+  <script src="scripts/ui/smooth-scroll.min.js"></script>
+  <script src="scripts/ui/scripts.js"></script>
+
+  <script src="scripts/ui/services.js"></script>
+  <script src="scripts/services.js"></script>
+
+  <script src="scripts/controllers.js"></script>
+  <script src="scripts/directives.js"></script>
+  <script src="scripts/app.js"></script>
+  <!-- endbuild -->
+  </body>
+</html>

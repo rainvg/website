@@ -122,4 +122,34 @@ angular.module('rain.controllers', []).controller('navbar-controller', ['$scope'
     $scope.code_copied = false;
     $scope.$apply();
   };
+}]).controller('chart-controller', ['$scope', 'rest', function($scope, rest)
+{
+  rest.get_energy_data().then(function(response)
+  {
+    var labels = [];
+    for(var i = 0; i < response.data.plots.up.x.length; i++)
+    {
+      if((i % 5) === 0)
+      {
+        labels.push(Math.ceil(response.data.plots.up.x[i]));
+      }
+      else
+      {
+        labels.push('');
+      }
+    }
+    $scope.labels = labels;
+    $scope.series = ['Up'];
+    $scope.data = [response.data.plots.up.y];
+
+    $scope.options = {
+      scales: {
+        yAxes: [{
+          display: true,
+          labelString: 'probability'
+        }]
+      }
+    };
+    
+    });
 }]);
